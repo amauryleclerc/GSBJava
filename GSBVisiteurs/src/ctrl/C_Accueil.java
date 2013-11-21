@@ -23,6 +23,7 @@ public class C_Accueil {
     public C_Accueil(){
         fenetre.setContentPane(vueConnexion);
         fenetre.setVisible(true);
+        changeVue();
     
 
     }
