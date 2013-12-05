@@ -29,7 +29,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="323" max="-2" attributes="0"/>
-              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+              <Component id="lbVisiteurs" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
@@ -48,39 +48,37 @@
               <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="btnprecedent" min="-2" pref="117" max="-2" attributes="0"/>
+                      <Component id="btnPrecedent" min="-2" pref="117" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnsuivant" min="-2" pref="111" max="-2" attributes="0"/>
+                      <Component id="btnSuivant" min="-2" pref="111" max="-2" attributes="0"/>
                       <EmptySpace pref="225" max="32767" attributes="0"/>
-                      <Component id="btnfermer" min="-2" pref="82" max="-2" attributes="0"/>
+                      <Component id="btnFermer" min="-2" pref="82" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jTextField3" min="-2" pref="371" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="cbChercher" min="-2" pref="282" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btnOk" min="-2" pref="71" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jTextField4" min="-2" pref="79" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                  <Component id="jTextField6" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="jTextField7" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="jTextField8" alignment="0" min="-2" pref="371" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextField5" min="-2" pref="371" max="-2" attributes="0"/>
-                          <Component id="jComboBox2" min="-2" pref="371" max="-2" attributes="0"/>
+                          <Component id="txtNom" min="-2" pref="371" max="-2" attributes="0"/>
+                          <Component id="cbLabo" min="-2" pref="371" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtPrenom" min="-2" pref="371" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="cbChercher" min="-2" pref="282" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnOk" min="-2" pref="71" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="txtSecteur" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtAdresse" alignment="0" min="-2" pref="371" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="txtCodePostal" min="-2" pref="79" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="txtVille" min="-2" pref="264" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -90,7 +88,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+              <Component id="lbVisiteurs" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbChercher" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -100,30 +98,36 @@
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lbNom" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField5" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtNom" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lbPrenom" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPrenom" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbAdresse" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtAdresse" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lbAdresse" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lbVille" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCodePostal" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtVille" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextField8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbVille" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbSecteur" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtSecteur" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -131,12 +135,12 @@
                       <Component id="lbLabo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnfermer" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnprecedent" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnsuivant" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnFermer" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnPrecedent" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnSuivant" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbLabo" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="99" max="32767" attributes="0"/>
           </Group>
@@ -144,15 +148,15 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JToggleButton" name="btnfermer">
+    <Component class="javax.swing.JToggleButton" name="btnFermer">
       <Properties>
         <Property name="text" type="java.lang.String" value="fermer"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnfermerActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFermerActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="lbVisiteurs">
       <Properties>
         <Property name="text" type="java.lang.String" value="Visiteurs"/>
       </Properties>
@@ -187,7 +191,7 @@
         <Property name="text" type="java.lang.String" value="secteur"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField3">
+    <Component class="javax.swing.JTextField" name="txtPrenom">
     </Component>
     <Component class="javax.swing.JComboBox" name="cbChercher">
       <Properties>
@@ -201,7 +205,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField4">
+    <Component class="javax.swing.JTextField" name="txtCodePostal">
     </Component>
     <Component class="javax.swing.JToggleButton" name="btnOk">
       <Properties>
@@ -211,33 +215,33 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOkActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField5">
+    <Component class="javax.swing.JTextField" name="txtNom">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField6">
+    <Component class="javax.swing.JTextField" name="txtVille">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField7">
+    <Component class="javax.swing.JTextField" name="txtSecteur">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField8">
+    <Component class="javax.swing.JTextField" name="txtAdresse">
     </Component>
     <Component class="javax.swing.JLabel" name="lbLabo">
       <Properties>
         <Property name="text" type="java.lang.String" value="labo"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="btnprecedent">
+    <Component class="javax.swing.JToggleButton" name="btnPrecedent">
       <Properties>
         <Property name="text" type="java.lang.String" value="precedent"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="btnsuivant">
+    <Component class="javax.swing.JToggleButton" name="btnSuivant">
       <Properties>
         <Property name="text" type="java.lang.String" value="suivant"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnsuivantActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSuivantActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox2">
+    <Component class="javax.swing.JComboBox" name="cbLabo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
