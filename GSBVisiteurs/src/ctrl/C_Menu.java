@@ -33,8 +33,8 @@ public class C_Menu extends C_Abstrait {
      * clic sur la commande Ajouter du menu presence Le contrôleur délègue
      * l'action au contrôleur frontal
      */
-    public void presenceAjouter() {
-        this.getCtrlPrincipal().action(EnumAction.MENU_PRESENCE_AJOUTER);
+    public void medicament() {
+        this.getCtrlPrincipal().action(EnumAction.MENU_MEDICAMENT);
     }
 
     @Override

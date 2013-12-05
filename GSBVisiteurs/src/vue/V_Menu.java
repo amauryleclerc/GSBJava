@@ -4,18 +4,30 @@
  */
 package vue;
 
+import javax.swing.JLabel;
+import javax.swing.JToggleButton;
+import ctrl.C_Abstrait;
+import ctrl.C_Menu;
 /**
  *
  * @author btssio
  */
-public class V_Menu extends javax.swing.JPanel {
+public class V_Menu extends V_Abstraite {
 
     /**
      * Creates new form V_Connexion
      */
-    public V_Menu() {
+    public V_Menu(C_Abstrait ctrlAbstrait) {
+        super(ctrlAbstrait);
         initComponents();
     }
+
+    /**
+     *
+     */
+ 
+
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,6 +52,11 @@ public class V_Menu extends javax.swing.JPanel {
         lbGsb.setText("GSB");
 
         btnMedicament.setText("Medicament");
+        btnMedicament.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMedicamentActionPerformed(evt);
+            }
+        });
 
         btnQuitter.setText("quitter");
 
@@ -88,6 +105,12 @@ public class V_Menu extends javax.swing.JPanel {
                 .addGap(79, 79, 79))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnMedicamentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicamentActionPerformed
+      
+        
+    }//GEN-LAST:event_btnMedicamentActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnMedicament;
     private javax.swing.JToggleButton btnPraticien;

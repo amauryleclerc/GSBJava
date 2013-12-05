@@ -32,18 +32,19 @@ public class C_Medicament extends C_Abstrait {
     }
 
     public final void actualiser() {
-        try {
+    /*    try {
             chargerListeEquipiers();
             chargerLesCodesEtat();
         } catch (DaoException ex) {
             JOptionPane.showMessageDialog(getVue(), "CtrlPresence - actualiser - " + ex.getMessage(), "Saisie des présences", JOptionPane.ERROR_MESSAGE);
-        }
+        }*/
     }
 
     /**
      * presenceEnregistrer réaction au clic sur le bouton VALIDER de la vue
      * VuePresences
      */
+    /*
     public void presenceEnregistrer() {
         // Déclarations de variables locales
         int nb = 0; // valeur de retour de l'opération de mise à jour
@@ -92,7 +93,7 @@ public class C_Medicament extends C_Abstrait {
             JOptionPane.showMessageDialog(getVue(), msg, "Saisie des présences", typeMsg);
         }
     }
-
+*/
     /**
      * presenceAnnuler réaction au clic sur le bouton ANNULER de la vue Le
      * contrôle est rendu au contrôleur frontal
@@ -100,6 +101,7 @@ public class C_Medicament extends C_Abstrait {
     public void medicamentQuitter() {
         this.getCtrlPrincipal().action(EnumAction.MEDICAMENT_QUITTER);
     }
+    /*
 
     public void presenceAfficher() {
         String msg = ""; // message à afficher en cas d'erreur
@@ -130,13 +132,14 @@ public class C_Medicament extends C_Abstrait {
             }
         }
     }
-
+*/
     /**
      * chargerListeEquipiers renseigner le modèle du composant jComboBoxEquipier
      * à partir de la base de données
      *
      * @throws DaoException
      */
+    /*
     private void chargerListeEquipiers() throws DaoException {
         List<Equipier> desEquipiers = daoEquipier.getAll();
         getVue().getModeleJComboBoxEquipier().removeAllElements();
@@ -144,13 +147,14 @@ public class C_Medicament extends C_Abstrait {
             getVue().getModeleJComboBoxEquipier().addElement(unEquipier);
         }
     }
-
+*/
     /**
      * chargerLesCodesEtat renseigner le modèle du composant
      * jComboBoxEtatPresence à partir de la base de données
      *
      * @throws DaoException
      */
+    /*
     private void chargerLesCodesEtat() throws DaoException {
         List<CodeEtat> desCodesEtat = daoCodeEtat.getAll();
         getVue().getModeleJComboBoxEtatPresence().removeAllElements();
@@ -158,7 +162,7 @@ public class C_Medicament extends C_Abstrait {
             getVue().getModeleJComboBoxEtatPresence().addElement(unCodeEtat);
         }
     }
-
+*/
     @Override
     public V_Medicament getVue() {
         return (V_Medicament) vue;

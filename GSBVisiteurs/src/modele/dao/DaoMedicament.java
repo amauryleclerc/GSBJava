@@ -106,13 +106,13 @@ public class DaoMedicament implements DaoInterface<Medicament, Integer> {
      */
     private Medicament chargerUnEnregistrement(ResultSet rs) throws DaoException {
         try {
-            Medicament medicament = new Medicament();
-      /*      medicament.setId(rs.getInt("ID_EQUIPIER"));
-            medicament.setNom(rs.getString("NOM"));
-            medicament.setPrenom(rs.getString("PRENOM")); */
+            Medicament medicament = new Medicament(null,null,null,null,null,null,null);
+          medicament.setMed_DepotLegal(rs.getString("ID_EQUIPIER"));
+            medicament.setMed_Composition(rs.getString("NOM"));
+            medicament.setMed_ContreIndic(rs.getString("PRENOM")); 
             return medicament;
         } catch (SQLException ex) {
             throw new DaoException("DaoEquipier - chargerUnEnregistrement : pb JDBC\n" + ex.getMessage());
         }
-    }
+    } 
 }

@@ -41,22 +41,22 @@ public class C_Principal {
                 medicamentQuitter();
                 break;
             case MENU_PRATICIEN: 
-                menuPraticien();
+                menuMedicament();
                 break;
             case PRATICIEN_QUITTER:   
-                praticienQuitter();
+                medicamentQuitter();
                 break;
            case MENU_VISITEUR: 
-                menuVisiteur();
+                menuMedicament();
                 break;
             case VISITEUR_QUITTER:   
-                visiteurQuitter();
+                medicamentQuitter();
                 break;
              case MENU_RAPPORT: 
-                menuRapport();
+                menuMedicament();
                 break;
             case RAPPORT_QUITTER:   
-                rapportQuitter();
+                medicamentQuitter();
                 break;
             case MENU_FICHIER_QUITTER: // fin de l'application depuis vueMenu
                 menuFichierQuitter();
