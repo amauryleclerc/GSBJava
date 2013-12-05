@@ -8,6 +8,7 @@ package ctrl;
 import static ctrl.EnumAction.*;
 import javax.swing.JOptionPane;
 import modele.jdbc.Jdbc;
+import vue.Fenetre;
 
 
 /**
@@ -17,9 +18,10 @@ import modele.jdbc.Jdbc;
 public class C_Principal {
     
 
-
+    private Fenetre fenetre =  new Fenetre();
     private C_Medicament ctrlMedicament = null;
     private C_Menu ctrlMenu = null;
+    
 
     /**
      * action par défaut action au démarrage de l'application
@@ -28,8 +30,11 @@ public class C_Principal {
         if (ctrlMenu == null) {
             ctrlMenu = new C_Menu(this);
         }
-        ctrlMenu.getVue().setEnabled(true);
-        ctrlMenu.getVue().setVisible(true);
+        fenetre.setEnabled(true);
+        fenetre.setContentPane(ctrlMenu.getVue());
+        fenetre.setVisible(true);
+   //     ctrlMenu.getVue().setEnabled(true);
+    //    ctrlMenu.getVue().setVisible(true);
     }
 
     public void action(EnumAction action) {
