@@ -4,6 +4,8 @@
  */
 package vue;
 
+import ctrl.C_Menu;
+
 /**
  *
  * @author btssio
@@ -15,6 +17,10 @@ public class V_Menu extends javax.swing.JPanel {
      */
     public V_Menu() {
         initComponents();
+    }
+
+    public V_Menu(C_Menu aThis) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
