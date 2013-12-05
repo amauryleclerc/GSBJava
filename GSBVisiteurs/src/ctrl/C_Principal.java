@@ -5,13 +5,7 @@
 package ctrl;
 
 
-import static controleur.EnumAction.*;
-import static ctrl.EnumAction.MEDICAMENT_QUITTER;
-import static ctrl.EnumAction.MENU_MEDICAMENT;
-import static ctrl.EnumAction.MENU_PRATICIEN;
-import static ctrl.EnumAction.MENU_VISITEUR;
-import static ctrl.EnumAction.PRATICIEN_QUITTER;
-import static ctrl.EnumAction.VISITEUR_QUITTER;
+import static ctrl.EnumAction.*;
 import javax.swing.JOptionPane;
 import modele.jdbc.Jdbc;
 
