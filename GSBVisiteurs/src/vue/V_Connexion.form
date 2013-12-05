@@ -28,25 +28,30 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="txtpass" min="-2" pref="271" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="240" max="-2" attributes="0"/>
-                          <Component id="txtnom" min="-2" pref="271" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="278" max="-2" attributes="0"/>
+                      <Component id="lbIdentifiezVous" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="164" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lbPassword" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbLogin" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="278" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtLogin" alignment="0" min="-2" pref="271" max="-2" attributes="0"/>
+                          <Component id="txtPassword" alignment="0" min="-2" pref="271" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnok" min="-2" pref="93" max="-2" attributes="0"/>
-                  <Component id="btnquitter" min="-2" pref="82" max="-2" attributes="0"/>
+                  <Component id="btnOk" min="-2" pref="93" max="-2" attributes="0"/>
+                  <Component id="btnQuitter" min="-2" pref="82" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="164" max="32767" attributes="0"/>
+              <EmptySpace pref="145" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -54,39 +59,53 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="18" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="txtnom" min="-2" max="-2" attributes="0"/>
+              <Component id="lbIdentifiezVous" min="-2" pref="18" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtpass" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnok" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtLogin" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbLogin" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnOk" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbPassword" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="261" max="32767" attributes="0"/>
-              <Component id="btnquitter" min="-2" max="-2" attributes="0"/>
+              <Component id="btnQuitter" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="lbIdentifiezVous">
       <Properties>
         <Property name="text" type="java.lang.String" value="Identifiez vous"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtnom">
+    <Component class="javax.swing.JTextField" name="txtLogin">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtpass">
+    <Component class="javax.swing.JTextField" name="txtPassword">
     </Component>
-    <Component class="javax.swing.JToggleButton" name="btnok">
+    <Component class="javax.swing.JToggleButton" name="btnOk">
       <Properties>
         <Property name="text" type="java.lang.String" value="ok"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="btnquitter">
+    <Component class="javax.swing.JToggleButton" name="btnQuitter">
       <Properties>
         <Property name="text" type="java.lang.String" value="quitter"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbLogin">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Login"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbPassword">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Password"/>
       </Properties>
     </Component>
   </SubComponents>

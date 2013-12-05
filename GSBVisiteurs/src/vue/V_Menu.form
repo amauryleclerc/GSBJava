@@ -31,19 +31,19 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="543" max="-2" attributes="0"/>
-                      <Component id="btnquitter" min="-2" pref="82" max="-2" attributes="0"/>
+                      <Component id="btnQuitter" min="-2" pref="82" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblGsb" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="277" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnok1" min="-2" pref="300" max="-2" attributes="0"/>
-                          <Component id="btnok" min="-2" pref="300" max="-2" attributes="0"/>
-                          <Component id="btnok2" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                          <Component id="btnok3" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                          <Component id="btnRapport" min="-2" pref="300" max="-2" attributes="0"/>
+                          <Component id="btnMedicament" min="-2" pref="300" max="-2" attributes="0"/>
+                          <Component id="btnPraticien" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                          <Component id="btnVisiteur" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -55,49 +55,49 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="18" max="-2" attributes="0"/>
+              <Component id="lblGsb" min="-2" pref="18" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Component id="btnok" min="-2" max="-2" attributes="0"/>
+              <Component id="btnMedicament" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnok2" min="-2" max="-2" attributes="0"/>
+              <Component id="btnPraticien" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnok3" min="-2" max="-2" attributes="0"/>
+              <Component id="btnVisiteur" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnok1" min="-2" max="-2" attributes="0"/>
+              <Component id="btnRapport" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="212" max="32767" attributes="0"/>
-              <Component id="btnquitter" min="-2" max="-2" attributes="0"/>
+              <Component id="btnQuitter" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="lblGsb">
       <Properties>
         <Property name="text" type="java.lang.String" value="GSB"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="btnok">
+    <Component class="javax.swing.JToggleButton" name="btnMedicament">
       <Properties>
         <Property name="text" type="java.lang.String" value="Medicament"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="btnquitter">
+    <Component class="javax.swing.JToggleButton" name="btnQuitter">
       <Properties>
         <Property name="text" type="java.lang.String" value="quitter"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="btnok1">
+    <Component class="javax.swing.JToggleButton" name="btnRapport">
       <Properties>
         <Property name="text" type="java.lang.String" value="Rapport"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="btnok2">
+    <Component class="javax.swing.JToggleButton" name="btnPraticien">
       <Properties>
         <Property name="text" type="java.lang.String" value="Praticien"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="btnok3">
+    <Component class="javax.swing.JToggleButton" name="btnVisiteur">
       <Properties>
         <Property name="text" type="java.lang.String" value="Visiteur"/>
       </Properties>

@@ -26,28 +26,28 @@ public class V_Menu extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        btnok = new javax.swing.JToggleButton();
-        btnquitter = new javax.swing.JToggleButton();
-        btnok1 = new javax.swing.JToggleButton();
-        btnok2 = new javax.swing.JToggleButton();
-        btnok3 = new javax.swing.JToggleButton();
+        lblGsb = new javax.swing.JLabel();
+        btnMedicament = new javax.swing.JToggleButton();
+        btnQuitter = new javax.swing.JToggleButton();
+        btnRapport = new javax.swing.JToggleButton();
+        btnPraticien = new javax.swing.JToggleButton();
+        btnVisiteur = new javax.swing.JToggleButton();
 
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
 
-        jLabel1.setText("GSB");
+        lblGsb.setText("GSB");
 
-        btnok.setText("Medicament");
+        btnMedicament.setText("Medicament");
 
-        btnquitter.setText("quitter");
+        btnQuitter.setText("quitter");
 
-        btnok1.setText("Rapport");
+        btnRapport.setText("Rapport");
 
-        btnok2.setText("Praticien");
+        btnPraticien.setText("Praticien");
 
-        btnok3.setText("Visiteur");
+        btnVisiteur.setText("Visiteur");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -57,43 +57,43 @@ public class V_Menu extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(543, 543, 543)
-                        .addComponent(btnquitter, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnQuitter, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(148, 148, 148)
-                        .addComponent(jLabel1))
+                        .addComponent(lblGsb))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(277, 277, 277)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnok1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnok, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnok2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnok3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnRapport, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnMedicament, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnPraticien, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnVisiteur, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(175, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(66, 66, 66)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblGsb, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(btnok)
+                .addComponent(btnMedicament)
                 .addGap(18, 18, 18)
-                .addComponent(btnok2)
+                .addComponent(btnPraticien)
                 .addGap(18, 18, 18)
-                .addComponent(btnok3)
+                .addComponent(btnVisiteur)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnok1)
+                .addComponent(btnRapport)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 212, Short.MAX_VALUE)
-                .addComponent(btnquitter)
+                .addComponent(btnQuitter)
                 .addGap(79, 79, 79))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnok;
-    private javax.swing.JToggleButton btnok1;
-    private javax.swing.JToggleButton btnok2;
-    private javax.swing.JToggleButton btnok3;
-    private javax.swing.JToggleButton btnquitter;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JToggleButton btnMedicament;
+    private javax.swing.JToggleButton btnPraticien;
+    private javax.swing.JToggleButton btnQuitter;
+    private javax.swing.JToggleButton btnRapport;
+    private javax.swing.JToggleButton btnVisiteur;
+    private javax.swing.JLabel lblGsb;
     // End of variables declaration//GEN-END:variables
 }
