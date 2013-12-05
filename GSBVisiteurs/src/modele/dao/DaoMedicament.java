@@ -13,13 +13,13 @@ import java.util.*;
 /**
  * Classe DAO pour la classe Visiteur
  */
-public class DaoVisiteur implements DaoInterface<Equipier, Integer> {
+public class DaoMedicament implements DaoInterface<Medicament, Integer> {
 
     /**
      * Non implémenté
      */
     @Override
-    public int create(Equipier unEquipier) throws Exception {
+    public int create(Medicament unEquipier) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -31,8 +31,8 @@ public class DaoVisiteur implements DaoInterface<Equipier, Integer> {
      * @throws Exception
      */
     @Override
-    public Equipier getOne(Integer idEquipier) throws DaoException {
-        Equipier result = null;
+    public Medicament getOne(Integer idEquipier) throws DaoException {
+        Medicament result = null;
         ResultSet rs = null;
         // préparer la requête
         String requete = "SELECT * FROM EQUIPIER WHERE ID_EQUIPIER=?";
@@ -56,8 +56,8 @@ public class DaoVisiteur implements DaoInterface<Equipier, Integer> {
      * EQUIPIER
      */
     @Override
-    public ArrayList<Equipier> getAll() throws DaoException {
-        ArrayList<Equipier> result = new ArrayList<Equipier>();
+    public ArrayList<Medicament> getAll() throws DaoException {
+        ArrayList<Medicament> result = new ArrayList<Medicament>();
         ResultSet rs;
         // préparer la requête
         String requete = "SELECT * FROM EQUIPIER";
@@ -66,7 +66,7 @@ public class DaoVisiteur implements DaoInterface<Equipier, Integer> {
             rs = ps.executeQuery();
             // Charger les enregistrements dans la collection
             while (rs.next()) {
-                Equipier unEquipier = chargerUnEnregistrement(rs);
+                Medicament unEquipier = chargerUnEnregistrement(rs);
                 result.add(unEquipier);
             }
         } catch (SQLException ex) {
@@ -79,7 +79,7 @@ public class DaoVisiteur implements DaoInterface<Equipier, Integer> {
      * Non implémenté
      */
     @Override
-    public int update(Integer idMetier, Equipier objetMetier) throws Exception {
+    public int update(Integer idMetier, Medicament objetMetier) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -104,18 +104,13 @@ public class DaoVisiteur implements DaoInterface<Equipier, Integer> {
      * renseignée
      * @throws DaoException
      */
-    private Equipier chargerUnEnregistrement(ResultSet rs) throws DaoException {
+    private Medicament chargerUnEnregistrement(ResultSet rs) throws DaoException {
         try {
-            Equipier equipier = new Equipier();
-            equipier.setId(rs.getInt("ID_EQUIPIER"));
-            equipier.setNom(rs.getString("NOM"));
-            equipier.setPrenom(rs.getString("PRENOM"));
-            if (rs.getInt("VOLONTAIRE_DIMANCHE") == 1) {
-                equipier.setDimanche(true);
-            } else {
-                equipier.setDimanche(false);
-            }
-            return equipier;
+            Medicament medicament = new Medicament();
+      /*      medicament.setId(rs.getInt("ID_EQUIPIER"));
+            medicament.setNom(rs.getString("NOM"));
+            medicament.setPrenom(rs.getString("PRENOM")); */
+            return medicament;
         } catch (SQLException ex) {
             throw new DaoException("DaoEquipier - chargerUnEnregistrement : pb JDBC\n" + ex.getMessage());
         }
