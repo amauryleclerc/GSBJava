@@ -1,4 +1,4 @@
-package controleur;
+package ctrl;
 
 /**
  * Liste des actions prises en charge par le contrôleur frontal
@@ -8,7 +8,13 @@ package controleur;
  * @author btssio
  */
 public enum EnumAction {
-    MENU_PRESENCE_AJOUTER
-    ,PRESENCE_QUITTER
+    MENU_MEDICAMENT
+    ,MEDICAMENT_QUITTER
+    ,MENU_PRATICIEN
+    ,PRATICIEN_QUITTER
+    ,MENU_VISITEUR
+    ,VISITEUR_QUITTER
+    ,MENU_RAPPORT
+    ,RAPPORT_QUITTER
     ,MENU_FICHIER_QUITTER
 }
