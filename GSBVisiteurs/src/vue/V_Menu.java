@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JToggleButton;
 import ctrl.C_Abstrait;
 import ctrl.C_Menu;
+import ctrl.EnumAction;
 /**
  *
  * @author btssio
@@ -107,8 +108,8 @@ public class V_Menu extends V_Abstraite {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMedicamentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicamentActionPerformed
-   //    ((C_Menu)C_Abstrait).medicament();
-        
+       ((C_Menu)controleur).medicament();
+          
     }//GEN-LAST:event_btnMedicamentActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -29,7 +29,7 @@ public class Medicament {
 
     @Override
     public String toString() {
-        return "Medicament{" + "med_DepotLegal=" + med_DepotLegal + ", med_NomCommercial=" + med_NomCommercial + ", famille=" + famille + ", med_Composition=" + med_Composition + ", med_Effets=" + med_Effets + ", med_ContreIndic=" + med_ContreIndic + ", med_PricEchantillon=" + med_PricEchantillon + '}';
+        return med_NomCommercial;
     }
 
     public String getMed_DepotLegal() {

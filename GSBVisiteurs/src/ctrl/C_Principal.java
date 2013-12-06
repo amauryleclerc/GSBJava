@@ -99,8 +99,9 @@ public class C_Principal {
         }
         // vuPresence est une fenêtre modale :
         // -> vueMenu reste visible, mais n'est pas active
-        ctrlMenu.getVue().setEnabled(false);
-        ctrlMedicament.getVue().setVisible(true);
+        fenetre.setVisible(false);
+        fenetre.setContentPane(ctrlMedicament.getVue());
+        fenetre.setVisible(true);
     }
 
     /**
@@ -110,9 +111,9 @@ public class C_Principal {
         if (ctrlMenu == null) {
             ctrlMenu = new C_Menu(this);
         }
-        ctrlMedicament.getVue().setVisible(false);
-        ctrlMenu.getVue().setEnabled(true);
-        ctrlMenu.getVue().setVisible(true);
+        fenetre.setVisible(false);
+        fenetre.setContentPane(ctrlMenu.getVue());
+        fenetre.setVisible(true);
     }
         private void connexionQuitter() {
         if (ctrlMenu == null) {

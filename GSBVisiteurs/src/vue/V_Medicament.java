@@ -5,19 +5,91 @@
 package vue;
 
 import ctrl.C_Abstrait;
+import ctrl.C_Connexion;
+import ctrl.C_Medicament;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
  * @author btssio
  */
 public class V_Medicament extends V_Abstraite {
-
+    DefaultComboBoxModel mcbNomCommercial;
     /**
      * Creates new form V_Connexion
      */
     public V_Medicament(C_Abstrait ctrlAbstrait) {
         super(ctrlAbstrait);
         initComponents();
+        mcbNomCommercial= new DefaultComboBoxModel();
+        cbNomCommercial.setModel(mcbNomCommercial);
+    }
+
+    public DefaultComboBoxModel getMcbNomCommercial() {
+        return mcbNomCommercial;
+    }
+
+    public void setMcbNomCommercial(DefaultComboBoxModel mcbNomCommercial) {
+        this.mcbNomCommercial = mcbNomCommercial;
+    }
+
+    public JComboBox getCbNomCommercial() {
+        return cbNomCommercial;
+    }
+
+    public void setCbNomCommercial(JComboBox cbNomCommercial) {
+        this.cbNomCommercial = cbNomCommercial;
+    }
+
+    public JTextField getTxtCode() {
+        return txtCode;
+    }
+
+    public void setTxtCode(JTextField txtCode) {
+        this.txtCode = txtCode;
+    }
+
+    public JTextArea getTxtComposition() {
+        return txtComposition;
+    }
+
+    public void setTxtComposition(JTextArea txtComposition) {
+        this.txtComposition = txtComposition;
+    }
+
+    public JTextArea getTxtContreIndications() {
+        return txtContreIndications;
+    }
+
+    public void setTxtContreIndications(JTextArea txtContreIndications) {
+        this.txtContreIndications = txtContreIndications;
+    }
+
+    public JTextArea getTxtEffetsIndesirables() {
+        return txtEffetsIndesirables;
+    }
+
+    public void setTxtEffetsIndesirables(JTextArea txtEffetsIndesirables) {
+        this.txtEffetsIndesirables = txtEffetsIndesirables;
+    }
+
+    public JTextField getTxtFamille() {
+        return txtFamille;
+    }
+
+    public void setTxtFamille(JTextField txtFamille) {
+        this.txtFamille = txtFamille;
+    }
+
+    public JTextField getTxtPrixEchantillon() {
+        return txtPrixEchantillon;
+    }
+
+    public void setTxtPrixEchantillon(JTextField txtPrixEchantillon) {
+        this.txtPrixEchantillon = txtPrixEchantillon;
     }
 
     /**
@@ -56,6 +128,11 @@ public class V_Medicament extends V_Abstraite {
         setPreferredSize(new java.awt.Dimension(800, 600));
 
         btnQuitter.setText("quitter");
+        btnQuitter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuitterActionPerformed(evt);
+            }
+        });
 
         lbMedicaments.setText("Medicaments");
 
@@ -82,10 +159,25 @@ public class V_Medicament extends V_Abstraite {
         jScrollPane2.setViewportView(txtContreIndications);
 
         cbNomCommercial.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbNomCommercial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbNomCommercialActionPerformed(evt);
+            }
+        });
 
         btnPrecedent.setText("Précedent");
+        btnPrecedent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrecedentActionPerformed(evt);
+            }
+        });
 
         btnSuivant.setText("Suivant");
+        btnSuivant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuivantActionPerformed(evt);
+            }
+        });
 
         txtEffetsIndesirables.setColumns(20);
         txtEffetsIndesirables.setRows(5);
@@ -195,6 +287,23 @@ public class V_Medicament extends V_Abstraite {
                         .addContainerGap(27, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cbNomCommercialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNomCommercialActionPerformed
+             ((C_Medicament)controleur).medicamentSelectionner();
+    }//GEN-LAST:event_cbNomCommercialActionPerformed
+
+    private void btnSuivantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuivantActionPerformed
+        ((C_Medicament)controleur).suivant();
+    }//GEN-LAST:event_btnSuivantActionPerformed
+
+    private void btnPrecedentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrecedentActionPerformed
+        ((C_Medicament)controleur).precedant();
+    }//GEN-LAST:event_btnPrecedentActionPerformed
+
+    private void btnQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitterActionPerformed
+        ((C_Medicament)controleur).medicamentQuitter();
+    }//GEN-LAST:event_btnQuitterActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnPrecedent;
     private javax.swing.JToggleButton btnQuitter;
