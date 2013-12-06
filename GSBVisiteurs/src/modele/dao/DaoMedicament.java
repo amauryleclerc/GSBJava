@@ -36,7 +36,7 @@ public class DaoMedicament implements DaoInterface<Medicament, Integer> {
         ResultSet rs = null;
         // préparer la requête
         String requete = "SELECT * FROM MEDICAMENT"
-                + "INNER JOIN FAMILLE ON MEDICAMENT.FAM_CODE = FAMILLE.FAM_CODE"
+                + " INNER JOIN FAMILLE ON MEDICAMENT.FAM_CODE = FAMILLE.FAM_CODE"
                 + " WHERE MED_DEPOTLEGAL=?";
         try {
             PreparedStatement ps = Jdbc.getInstance().getConnexion().prepareStatement(requete);
@@ -62,7 +62,8 @@ public class DaoMedicament implements DaoInterface<Medicament, Integer> {
         ArrayList<Medicament> result = new ArrayList<Medicament>();
         ResultSet rs;
         // préparer la requête
-        String requete = "SELECT * FROM MEDICAMENT";
+        String requete = "SELECT * FROM MEDICAMENT"
+                + " LEFT JOIN FAMILLE ON FAMILLE.FAM_CODE=MEDICAMENT.FAM_CODE";
         try {
             PreparedStatement ps = Jdbc.getInstance().getConnexion().prepareStatement(requete);
             rs = ps.executeQuery();
@@ -111,18 +112,18 @@ public class DaoMedicament implements DaoInterface<Medicament, Integer> {
             Medicament medicament = new Medicament(null,null,null,null,null,null,null);
            
             
-          medicament.setMed_DepotLegal(rs.getString("MED_DEPOTLEGAL"));
-          medicament.setMed_NomCommercial(rs.getString("MED_NOMCOMMERCIAL"));
+         medicament.setMed_DepotLegal(rs.getString("MED_DEPOTLEGAL"));
+         medicament.setMed_NomCommercial(rs.getString("MED_NOMCOMMERCIAL"));
           if(rs.getString("FAM_CODE")!=null){
-               Famille famille = new Famille(null,null);
+              Famille famille = new Famille(null,null);
                famille.setFam_Code(rs.getString("FAM_CODE"));
                famille.setFam_Libelle(rs.getString("FAM_LIBELLE"));
                medicament.setFamille(famille);
           }
-            medicament.setMed_Composition(rs.getString("MED_COMPOSITION"));
-            medicament.setMed_Effets(rs.getString("MED_EFFETS"));
+           medicament.setMed_Composition(rs.getString("MED_COMPOSITION"));
+           medicament.setMed_Effets(rs.getString("MED_EFFETS"));
             medicament.setMed_ContreIndic(rs.getString("MED_CONTREINDIC")); 
-            medicament.setMed_PricEchantillon(rs.getFloat("MED_PRIXECHANTILLON"));
+           medicament.setMed_PricEchantillon(rs.getFloat("MED_PRIXECHANTILLON"));
             return medicament;
         } catch (SQLException ex) {
             throw new DaoException("DaoMedicament - chargerUnEnregistrement : pb JDBC\n" + ex.getMessage());
