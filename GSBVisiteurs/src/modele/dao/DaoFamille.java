@@ -13,13 +13,13 @@ import java.util.*;
 /**
  * Classe DAO pour la classe Visiteur
  */
-public class DaoPraticien implements DaoInterface<Praticien, Integer> {
+public class DaoFamille implements DaoInterface<Famille, Integer> {
 
     /**
      * Non implémenté
      */
     @Override
-    public int create(Praticien unPraticien) throws Exception {
+    public int create(Famille uneFamille) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -30,21 +30,20 @@ public class DaoPraticien implements DaoInterface<Praticien, Integer> {
      * @return objet métier trouvé, ou null sinon
      * @throws Exception
      */
-    @Override
-    public Praticien getOne(Integer idPraticien) throws DaoException {
-        Praticien result = null;
+        public Famille getOne(String idFamille) throws DaoException {
+        Famille result = null;
         ResultSet rs = null;
         // préparer la requête
-        String requete = "SELECT * FROM PRATICIEN WHERE PRA_NUM=?";
+        String requete = "SELECT * FROM FAMILLE WHERE FAM_CODE=?";
         try {
             PreparedStatement ps = Jdbc.getInstance().getConnexion().prepareStatement(requete);
-            ps.setInt(1, idPraticien);
+            ps.setString(1, idFamille);
             rs = ps.executeQuery();
             if (rs.next()) {
                 result = chargerUnEnregistrement(rs);
             }
         } catch (SQLException ex) {
-            throw new modele.dao.DaoException("DaoPraticien::getOne : erreur requete SELECT : " + ex.getMessage());
+            throw new modele.dao.DaoException("DaoFamille::getOne : erreur requete SELECT : " + ex.getMessage());
         }
         return (result);
     }
@@ -56,21 +55,21 @@ public class DaoPraticien implements DaoInterface<Praticien, Integer> {
      * EQUIPIER
      */
     @Override
-    public ArrayList<Praticien> getAll() throws DaoException {
-        ArrayList<Praticien> result = new ArrayList<Praticien>();
+    public ArrayList<Famille> getAll() throws DaoException {
+        ArrayList<Famille> result = new ArrayList<Famille>();
         ResultSet rs;
         // préparer la requête
-        String requete = "SELECT * FROM PRATICIEN";
+        String requete = "SELECT * FROM FAMILLE";
         try {
             PreparedStatement ps = Jdbc.getInstance().getConnexion().prepareStatement(requete);
             rs = ps.executeQuery();
             // Charger les enregistrements dans la collection
             while (rs.next()) {
-                Praticien unPraticien = chargerUnEnregistrement(rs);
-                result.add(unPraticien);
+                Famille uneFamille = chargerUnEnregistrement(rs);
+                result.add(uneFamille);
             }
         } catch (SQLException ex) {
-            throw new modele.dao.DaoException("DaoPraticien::getAll : erreur requete SELECT : " + ex.getMessage());
+            throw new modele.dao.DaoException("DaoFamille::getAll : erreur requete SELECT : " + ex.getMessage());
         }
         return result;
     }
@@ -79,7 +78,7 @@ public class DaoPraticien implements DaoInterface<Praticien, Integer> {
      * Non implémenté
      */
     @Override
-    public int update(Integer idMetier, Praticien objetMetier) throws Exception {
+    public int update(Integer idMetier, Famille objetMetier) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -89,24 +88,6 @@ public class DaoPraticien implements DaoInterface<Praticien, Integer> {
     @Override
     public int delete(Integer idMetier) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    public boolean verification(String login, String password) throws DaoException{
-         boolean result = false;
-        ResultSet rs = null;
-        // préparer la requête
-        String requete = "SELECT * FROM PRATICIEN WHERE PRA_NOM=?";
-        try {
-            PreparedStatement ps = Jdbc.getInstance().getConnexion().prepareStatement(requete);
-            ps.setString(1, login);
-            rs = ps.executeQuery();
-            if (rs.next()) {
-                result=true;
-            }
-        } catch (SQLException ex) {
-            throw new modele.dao.DaoException("DaoPraticien::getOne : erreur requete SELECT : " + ex.getMessage());
-        }
-        
-        return result;
     }
 
     //----------------------------------------------------------------------
@@ -122,24 +103,20 @@ public class DaoPraticien implements DaoInterface<Praticien, Integer> {
      * renseignée
      * @throws DaoException
      */
-    
-    private Praticien chargerUnEnregistrement(ResultSet rs) throws DaoException {
+    private Famille chargerUnEnregistrement(ResultSet rs) throws DaoException {
         try {
-            Praticien praticien = new Praticien(0,null,null,null,null,null,null,null);
-            praticien.setPra_Num(rs.getInt("PRA_NUM"));
-            praticien.setPra_Nom(rs.getString("PRA_NOM"));
-            praticien.setPra_Prenom(rs.getString("PRA_PRENOM"));
-            praticien.setPra_Adresse(rs.getString("PRA_ADRESSE"));
-            praticien.setPra_Cp(rs.getString("PRA_CP"));
-            praticien.setPra_Ville(rs.getString("PRA_VILLE"));
-            praticien.setPra_CoefNotoriete(rs.getFloat("PRA_COEFNOTORIETE"));
-       //     praticien.setType_Practicien(DAOType_Praticien.getOne());
+            Famille famille = new Famille(null,null);
+            famille.setFam_Code(rs.getString("FAM_CODE"));
+            famille.setFam_Libelle(rs.getString("FAM_LIBELLE"));
             
-          
-            return praticien;
+            return famille;
         } catch (SQLException ex) {
-            throw new DaoException("DaoPraticien - chargerUnEnregistrement : pb JDBC\n" + ex.getMessage());
+            throw new DaoException("DaoFamille - chargerUnEnregistrement : pb JDBC\n" + ex.getMessage());
         }
     } 
-    
+
+    @Override
+    public Famille getOne(Integer idMetier) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

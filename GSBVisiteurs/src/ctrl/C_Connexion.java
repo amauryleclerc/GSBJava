@@ -5,6 +5,7 @@
 
 package ctrl;
 
+import static ctrl.EnumAction.MENU_FICHIER_QUITTER;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -45,16 +46,18 @@ public class C_Connexion extends C_Abstrait {
             try {
                 if(!daoPraticien.verification(login, password)){
                  msg = "mauvais login ou mot de passe";
-                typeMsg = JOptionPane.ERROR_MESSAGE;
+                   typeMsg = JOptionPane.WARNING_MESSAGE;
                 } else {
-                ctrlPrincipal.action(EnumAction.MENU_RAPPORT);
+                 this.getCtrlPrincipal().action(EnumAction.CONNEXION);
+                    msg = "Bienvenue";
+                    typeMsg = JOptionPane.INFORMATION_MESSAGE;
             }
             } catch (DaoException ex) {
                 msg = "CtrlConnexion - seConnecter() - " + ex.getMessage();
                 typeMsg = JOptionPane.ERROR_MESSAGE;
             } 
        
-     
+       JOptionPane.showMessageDialog(getVue(), msg, "Connexion", typeMsg);
         
     }
 
@@ -125,8 +128,8 @@ public class C_Connexion extends C_Abstrait {
      * presenceAnnuler réaction au clic sur le bouton ANNULER de la vue Le
      * contrôle est rendu au contrôleur frontal
      */
-    public void medicamentQuitter() {
-        this.getCtrlPrincipal().action(EnumAction.MEDICAMENT_QUITTER);
+    public void connexionQuitter() {
+        this.getCtrlPrincipal().action(EnumAction.MENU_FICHIER_QUITTER);
     }
 
     @Override
