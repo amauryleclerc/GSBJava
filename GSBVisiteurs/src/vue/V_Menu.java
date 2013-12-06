@@ -107,7 +107,7 @@ public class V_Menu extends V_Abstraite {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMedicamentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicamentActionPerformed
-      // ((C_Menu)ctrlAbstrait).medicament();
+   //    ((C_Menu)C_Abstrait).medicament();
         
     }//GEN-LAST:event_btnMedicamentActionPerformed
 

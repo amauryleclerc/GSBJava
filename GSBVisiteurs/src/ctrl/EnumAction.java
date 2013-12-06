@@ -17,4 +17,5 @@ public enum EnumAction {
     ,MENU_RAPPORT
     ,RAPPORT_QUITTER
     ,MENU_FICHIER_QUITTER
+    ,CONNEXION
 }

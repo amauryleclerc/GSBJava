@@ -90,6 +90,9 @@ public class DaoPraticien implements DaoInterface<Praticien, Integer> {
     public int delete(Integer idMetier) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    public boolean verification(String login, String password) throws DaoException{
+        return true;
+    }
 
     //----------------------------------------------------------------------
     //  Méthodes privées
@@ -104,6 +107,7 @@ public class DaoPraticien implements DaoInterface<Praticien, Integer> {
      * renseignée
      * @throws DaoException
      */
+    
     private Praticien chargerUnEnregistrement(ResultSet rs) throws DaoException {
         try {
             Praticien praticien = new Praticien(0,null,null,null,null,null,null,null);
@@ -122,4 +126,5 @@ public class DaoPraticien implements DaoInterface<Praticien, Integer> {
             throw new DaoException("DaoPraticien - chargerUnEnregistrement : pb JDBC\n" + ex.getMessage());
         }
     } 
+    
 }

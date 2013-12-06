@@ -7,6 +7,8 @@ package ctrl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modele.dao.*;
 import modele.metier.*;
@@ -27,6 +29,33 @@ public class C_Connexion extends C_Abstrait {
         super(ctrlPrincipal);
         vue = new V_Connexion(this);
         actualiser();
+    }
+    public void seConnecter() {
+        // Déclarations de variables locales
+        int nb = 0; // valeur de retour de l'opération de mise à jour
+        String msg = ""; // message à afficher à l'issue de la mise à jour
+        int typeMsg = 0;
+        String login = null;
+        String password =null;
+        //récupération des valeur du formulaire
+        login = getVue().getTxtLogin().getText();
+        password = getVue().getTxtPassword().getText();
+          //(CodeEtat) getVue().getjComboBoxEtatPresence().getSelectedItem();
+
+            try {
+                if(!daoPraticien.verification(login, password)){
+                 msg = "mauvais login ou mot de passe";
+                typeMsg = JOptionPane.ERROR_MESSAGE;
+                } else {
+                ctrlPrincipal.action(EnumAction.MENU_RAPPORT);
+            }
+            } catch (DaoException ex) {
+                msg = "CtrlConnexion - seConnecter() - " + ex.getMessage();
+                typeMsg = JOptionPane.ERROR_MESSAGE;
+            } 
+       
+     
+        
     }
 
     public final void actualiser() {

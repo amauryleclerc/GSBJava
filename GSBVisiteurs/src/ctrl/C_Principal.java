@@ -62,6 +62,9 @@ public class C_Principal {
             case RAPPORT_QUITTER:   
                 medicamentQuitter();
                 break;
+             case CONNEXION:   
+                connexionQuitter();
+                break;
             case MENU_FICHIER_QUITTER: // fin de l'application depuis vueMenu
                 menuFichierQuitter();
                 break;
@@ -111,5 +114,14 @@ public class C_Principal {
         ctrlMenu.getVue().setEnabled(true);
         ctrlMenu.getVue().setVisible(true);
     }
+        private void connexionQuitter() {
+        if (ctrlMenu == null) {
+            ctrlMenu = new C_Menu(this);
+        }
+        fenetre.setVisible(false);
+        fenetre.setContentPane(ctrlMenu.getVue());
+        fenetre.setVisible(true);
+    }
+    
 }
 
