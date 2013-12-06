@@ -21,20 +21,19 @@ public class C_Principal {
     private Fenetre fenetre =  new Fenetre();
     private C_Medicament ctrlMedicament = null;
     private C_Menu ctrlMenu = null;
+    private C_Connexion ctrlConnexion = null;
     
 
     /**
      * action par défaut action au démarrage de l'application
      */
     public void action() {
-        if (ctrlMenu == null) {
-            ctrlMenu = new C_Menu(this);
+        if (ctrlConnexion == null) {
+            ctrlConnexion = new C_Connexion(this);
         }
         fenetre.setEnabled(true);
-        fenetre.setContentPane(ctrlMenu.getVue());
+        fenetre.setContentPane(ctrlConnexion.getVue());
         fenetre.setVisible(true);
-   //     ctrlMenu.getVue().setEnabled(true);
-    //    ctrlMenu.getVue().setVisible(true);
     }
 
     public void action(EnumAction action) {

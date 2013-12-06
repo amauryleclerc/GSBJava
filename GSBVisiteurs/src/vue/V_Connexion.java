@@ -4,16 +4,19 @@
  */
 package vue;
 
+import ctrl.C_Abstrait;
+
 /**
  *
  * @author btssio
  */
-public class V_Connexion extends javax.swing.JPanel {
+public class V_Connexion extends V_Abstraite {
 
     /**
      * Creates new form V_Connexion
      */
-    public V_Connexion() {
+    public V_Connexion(C_Abstrait ctrlAbstrait) {
+        super(ctrlAbstrait);
         initComponents();
     }
 
