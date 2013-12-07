@@ -166,6 +166,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="fermer"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFermerActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbPraticiens">
       <Properties>
@@ -222,6 +225,9 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbChercherActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtCodePostal">
     </Component>
@@ -252,6 +258,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="precedent"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrecedentActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JToggleButton" name="btnSuivant">
       <Properties>

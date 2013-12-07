@@ -36,6 +36,9 @@ public class C_Menu extends C_Abstrait {
     public void medicament() {
         this.getCtrlPrincipal().action(EnumAction.MENU_MEDICAMENT);
     }
+        public void praticien() {
+        this.getCtrlPrincipal().action(EnumAction.MENU_PRATICIEN);
+    }
 
     @Override
     public V_Menu getVue() {

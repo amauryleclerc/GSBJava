@@ -35,7 +35,9 @@ public class DaoPraticien implements DaoInterface<Praticien, Integer> {
         Praticien result = null;
         ResultSet rs = null;
         // préparer la requête
-        String requete = "SELECT * FROM PRATICIEN WHERE PRA_NUM=?";
+        String requete = "SELECT * FROM PRATICIEN"
+                + " LEFT JOIN TYPE_PRATICIEN ON PRATICIEN.TYP_CODE=TYP_PRATICIEN.TYP_CODE"
+                + " WHERE PRA_NUM=?";
         try {
             PreparedStatement ps = Jdbc.getInstance().getConnexion().prepareStatement(requete);
             ps.setInt(1, idPraticien);
@@ -60,7 +62,8 @@ public class DaoPraticien implements DaoInterface<Praticien, Integer> {
         ArrayList<Praticien> result = new ArrayList<Praticien>();
         ResultSet rs;
         // préparer la requête
-        String requete = "SELECT * FROM PRATICIEN";
+        String requete = "SELECT * FROM PRATICIEN"
+                + " LEFT JOIN TYPE_PRATICIEN ON PRATICIEN.TYP_CODE=TYPE_PRATICIEN.TYP_CODE";
         try {
             PreparedStatement ps = Jdbc.getInstance().getConnexion().prepareStatement(requete);
             rs = ps.executeQuery();
@@ -133,7 +136,13 @@ public class DaoPraticien implements DaoInterface<Praticien, Integer> {
             praticien.setPra_Cp(rs.getString("PRA_CP"));
             praticien.setPra_Ville(rs.getString("PRA_VILLE"));
             praticien.setPra_CoefNotoriete(rs.getFloat("PRA_COEFNOTORIETE"));
-       //     praticien.setType_Practicien(DAOType_Praticien.getOne());
+            if(rs.getString("TYP_CODE")!=null){
+                Type_Praticien typePraticien = new Type_Praticien(null,null,null);
+                typePraticien.setTyp_Code(rs.getString("TYP_CODE"));
+                typePraticien.setTyp_Libelle(rs.getString("TYP_LIBELLE"));
+                typePraticien.setTyp_Lieu(rs.getString("TYP_LIEU"));
+                praticien.setType_Practicien(typePraticien);
+            }
             
           
             return praticien;

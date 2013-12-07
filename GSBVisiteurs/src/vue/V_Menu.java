@@ -60,10 +60,20 @@ public class V_Menu extends V_Abstraite {
         });
 
         btnQuitter.setText("quitter");
+        btnQuitter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuitterActionPerformed(evt);
+            }
+        });
 
         btnRapport.setText("Rapport");
 
         btnPraticien.setText("Praticien");
+        btnPraticien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPraticienActionPerformed(evt);
+            }
+        });
 
         btnVisiteur.setText("Visiteur");
 
@@ -111,6 +121,14 @@ public class V_Menu extends V_Abstraite {
        ((C_Menu)controleur).medicament();
           
     }//GEN-LAST:event_btnMedicamentActionPerformed
+
+    private void btnPraticienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPraticienActionPerformed
+       ((C_Menu)controleur).praticien();
+    }//GEN-LAST:event_btnPraticienActionPerformed
+
+    private void btnQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitterActionPerformed
+         ((C_Menu)controleur).fichierQuitter();
+    }//GEN-LAST:event_btnQuitterActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnMedicament;

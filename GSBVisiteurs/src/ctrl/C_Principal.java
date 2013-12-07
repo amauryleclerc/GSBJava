@@ -20,6 +20,7 @@ public class C_Principal {
 
     private Fenetre fenetre =  new Fenetre();
     private C_Medicament ctrlMedicament = null;
+    private C_Praticien ctrlPraticien = null;
     private C_Menu ctrlMenu = null;
     private C_Connexion ctrlConnexion = null;
     
@@ -45,7 +46,7 @@ public class C_Principal {
                 medicamentQuitter();
                 break;
             case MENU_PRATICIEN: 
-                menuMedicament();
+                menuPraticien();
                 break;
             case PRATICIEN_QUITTER:   
                 medicamentQuitter();
@@ -108,6 +109,32 @@ public class C_Principal {
      * Transition vuePresence / vueMenu
      */
     private void medicamentQuitter() {
+        if (ctrlMenu == null) {
+            ctrlMenu = new C_Menu(this);
+        }
+        fenetre.setVisible(false);
+        fenetre.setContentPane(ctrlMenu.getVue());
+        fenetre.setVisible(true);
+    }
+    private void menuPraticien() {
+        if (ctrlPraticien == null) {
+            ctrlPraticien = new C_Praticien(this);
+        } else {
+            // si la le contrôleur et sa vue existent déjà
+            // il faut rafraîchir le contenu à partir de la base de données
+            ctrlPraticien.actualiser();
+        }
+        // vuPresence est une fenêtre modale :
+        // -> vueMenu reste visible, mais n'est pas active
+        fenetre.setVisible(false);
+        fenetre.setContentPane(ctrlPraticien.getVue());
+        fenetre.setVisible(true);
+    }
+
+    /**
+     * Transition vuePresence / vueMenu
+     */
+    private void PraticienQuitter() {
         if (ctrlMenu == null) {
             ctrlMenu = new C_Menu(this);
         }

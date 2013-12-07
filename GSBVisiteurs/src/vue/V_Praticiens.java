@@ -4,17 +4,107 @@
  */
 package vue;
 
+import ctrl.C_Abstrait;
+import ctrl.C_Medicament;
+import ctrl.C_Praticien;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+
 /**
  *
  * @author btssio
  */
-public class V_Praticiens extends javax.swing.JPanel {
-
+public class V_Praticiens extends V_Abstraite {
+DefaultComboBoxModel mcbChercher;
     /**
      * Creates new form V_Connexion
      */
-    public V_Praticiens() {
+    public V_Praticiens(C_Abstrait ctrlAbstrait) {
+        super(ctrlAbstrait);
         initComponents();
+        mcbChercher= new DefaultComboBoxModel();
+        cbChercher.setModel(mcbChercher);
+    }
+
+    public DefaultComboBoxModel getMcbChercher() {
+        return mcbChercher;
+    }
+
+    public void setMcbChercher(DefaultComboBoxModel mcbChercher) {
+        this.mcbChercher = mcbChercher;
+    }
+
+    public JComboBox getCbChercher() {
+        return cbChercher;
+    }
+
+    public void setCbChercher(JComboBox cbChercher) {
+        this.cbChercher = cbChercher;
+    }
+
+    public JTextField getTxtAdresse() {
+        return txtAdresse;
+    }
+
+    public void setTxtAdresse(JTextField txtAdresse) {
+        this.txtAdresse = txtAdresse;
+    }
+
+    public JTextField getTxtCodePostal() {
+        return txtCodePostal;
+    }
+
+    public void setTxtCodePostal(JTextField txtCodePostal) {
+        this.txtCodePostal = txtCodePostal;
+    }
+
+    public JTextField getTxtCoeffNotoriete() {
+        return txtCoeffNotoriete;
+    }
+
+    public void setTxtCoeffNotoriete(JTextField txtCoeffNotoriete) {
+        this.txtCoeffNotoriete = txtCoeffNotoriete;
+    }
+
+    public JTextField getTxtLieuExercice() {
+        return txtLieuExercice;
+    }
+
+    public void setTxtLieuExercice(JTextField txtLieuExercice) {
+        this.txtLieuExercice = txtLieuExercice;
+    }
+
+    public JTextField getTxtNom() {
+        return txtNom;
+    }
+
+    public void setTxtNom(JTextField txtNom) {
+        this.txtNom = txtNom;
+    }
+
+    public JTextField getTxtNumero() {
+        return txtNumero;
+    }
+
+    public void setTxtNumero(JTextField txtNumero) {
+        this.txtNumero = txtNumero;
+    }
+
+    public JTextField getTxtPrenom() {
+        return txtPrenom;
+    }
+
+    public void setTxtPrenom(JTextField txtPrenom) {
+        this.txtPrenom = txtPrenom;
+    }
+
+    public JTextField getTxtVille() {
+        return txtVille;
+    }
+
+    public void setTxtVille(JTextField txtVille) {
+        this.txtVille = txtVille;
     }
 
     /**
@@ -54,6 +144,11 @@ public class V_Praticiens extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(800, 600));
 
         btnFermer.setText("fermer");
+        btnFermer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFermerActionPerformed(evt);
+            }
+        });
 
         lbPraticiens.setText("Praticiens");
 
@@ -72,6 +167,11 @@ public class V_Praticiens extends javax.swing.JPanel {
         lbCoeffNotoriete.setText("coeff. notoriété");
 
         cbChercher.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbChercher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbChercherActionPerformed(evt);
+            }
+        });
 
         btnOk.setText("ok");
         btnOk.addActionListener(new java.awt.event.ActionListener() {
@@ -83,6 +183,11 @@ public class V_Praticiens extends javax.swing.JPanel {
         lbLieuExercice.setText("lieu d'exercice");
 
         btnPrecedent.setText("precedent");
+        btnPrecedent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrecedentActionPerformed(evt);
+            }
+        });
 
         btnSuivant.setText("suivant");
         btnSuivant.addActionListener(new java.awt.event.ActionListener() {
@@ -204,8 +309,20 @@ public class V_Praticiens extends javax.swing.JPanel {
     }//GEN-LAST:event_btnOkActionPerformed
 
     private void btnSuivantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuivantActionPerformed
-        // TODO add your handling code here:
+        ((C_Praticien)controleur).suivant();
     }//GEN-LAST:event_btnSuivantActionPerformed
+
+    private void cbChercherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbChercherActionPerformed
+        ((C_Praticien)controleur).praticienSelectionner();
+    }//GEN-LAST:event_cbChercherActionPerformed
+
+    private void btnPrecedentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrecedentActionPerformed
+        ((C_Praticien)controleur).precedant();
+    }//GEN-LAST:event_btnPrecedentActionPerformed
+
+    private void btnFermerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFermerActionPerformed
+        ((C_Praticien)controleur).praticienQuitter();
+    }//GEN-LAST:event_btnFermerActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnFermer;
