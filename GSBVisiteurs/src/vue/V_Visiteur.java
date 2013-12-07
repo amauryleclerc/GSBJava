@@ -4,17 +4,97 @@
  */
 package vue;
 
+import ctrl.C_Abstrait;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+
 /**
  *
  * @author btssio
  */
-public class V_Visiteur extends javax.swing.JPanel {
-
+public class V_Visiteur extends V_Abstraite {
+DefaultComboBoxModel mcbChercher;
     /**
      * Creates new form V_Connexion
      */
-    public V_Visiteur() {
+    public V_Visiteur(C_Abstrait ctrlAbstrait) {
+        super(ctrlAbstrait);
         initComponents();
+        mcbChercher= new DefaultComboBoxModel();
+        cbChercher.setModel(mcbChercher);
+    }
+
+    public DefaultComboBoxModel getMcbChercher() {
+        return mcbChercher;
+    }
+
+    public void setMcbChercher(DefaultComboBoxModel mcbChercher) {
+        this.mcbChercher = mcbChercher;
+    }
+
+    public JComboBox getCbChercher() {
+        return cbChercher;
+    }
+
+    public void setCbChercher(JComboBox cbChercher) {
+        this.cbChercher = cbChercher;
+    }
+
+    public JComboBox getCbLabo() {
+        return cbLabo;
+    }
+
+    public void setCbLabo(JComboBox cbLabo) {
+        this.cbLabo = cbLabo;
+    }
+
+    public JTextField getTxtAdresse() {
+        return txtAdresse;
+    }
+
+    public void setTxtAdresse(JTextField txtAdresse) {
+        this.txtAdresse = txtAdresse;
+    }
+
+    public JTextField getTxtCodePostal() {
+        return txtCodePostal;
+    }
+
+    public void setTxtCodePostal(JTextField txtCodePostal) {
+        this.txtCodePostal = txtCodePostal;
+    }
+
+    public JTextField getTxtNom() {
+        return txtNom;
+    }
+
+    public void setTxtNom(JTextField txtNom) {
+        this.txtNom = txtNom;
+    }
+
+    public JTextField getTxtPrenom() {
+        return txtPrenom;
+    }
+
+    public void setTxtPrenom(JTextField txtPrenom) {
+        this.txtPrenom = txtPrenom;
+    }
+
+    public JTextField getTxtSecteur() {
+        return txtSecteur;
+    }
+
+    public void setTxtSecteur(JTextField txtSecteur) {
+        this.txtSecteur = txtSecteur;
+    }
+
+    public JTextField getTxtVille() {
+        return txtVille;
+    }
+
+    public void setTxtVille(JTextField txtVille) {
+        this.txtVille = txtVille;
     }
 
     /**
@@ -73,6 +153,11 @@ public class V_Visiteur extends javax.swing.JPanel {
         lbSecteur.setText("secteur");
 
         cbChercher.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbChercher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbChercherActionPerformed(evt);
+            }
+        });
 
         btnOk.setText("ok");
         btnOk.addActionListener(new java.awt.event.ActionListener() {
@@ -84,6 +169,11 @@ public class V_Visiteur extends javax.swing.JPanel {
         lbLabo.setText("labo");
 
         btnPrecedent.setText("precedent");
+        btnPrecedent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrecedentActionPerformed(evt);
+            }
+        });
 
         btnSuivant.setText("suivant");
         btnSuivant.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +183,11 @@ public class V_Visiteur extends javax.swing.JPanel {
         });
 
         cbLabo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbLabo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbLaboActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -126,7 +221,7 @@ public class V_Visiteur extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbLabo, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 250, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtPrenom, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -182,13 +277,13 @@ public class V_Visiteur extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbLabo)
-                        .addGap(58, 58, 58)
+                        .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnFermer)
                             .addComponent(btnPrecedent)
                             .addComponent(btnSuivant)))
                     .addComponent(cbLabo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -205,6 +300,18 @@ public class V_Visiteur extends javax.swing.JPanel {
         
         
     }//GEN-LAST:event_btnFermerActionPerformed
+
+    private void cbChercherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbChercherActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbChercherActionPerformed
+
+    private void cbLaboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLaboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbLaboActionPerformed
+
+    private void btnPrecedentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrecedentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPrecedentActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnFermer;
