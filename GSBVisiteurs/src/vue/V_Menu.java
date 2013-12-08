@@ -67,6 +67,11 @@ public class V_Menu extends V_Abstraite {
         });
 
         btnRapport.setText("Rapport");
+        btnRapport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRapportActionPerformed(evt);
+            }
+        });
 
         btnPraticien.setText("Praticien");
         btnPraticien.addActionListener(new java.awt.event.ActionListener() {
@@ -76,6 +81,11 @@ public class V_Menu extends V_Abstraite {
         });
 
         btnVisiteur.setText("Visiteur");
+        btnVisiteur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisiteurActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -129,6 +139,14 @@ public class V_Menu extends V_Abstraite {
     private void btnQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitterActionPerformed
          ((C_Menu)controleur).fichierQuitter();
     }//GEN-LAST:event_btnQuitterActionPerformed
+
+    private void btnVisiteurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisiteurActionPerformed
+         ((C_Menu)controleur).visiteur();
+    }//GEN-LAST:event_btnVisiteurActionPerformed
+
+    private void btnRapportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRapportActionPerformed
+         ((C_Menu)controleur).rapport();
+    }//GEN-LAST:event_btnRapportActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnMedicament;

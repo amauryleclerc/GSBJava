@@ -97,6 +97,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Rapport"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRapportActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JToggleButton" name="btnPraticien">
       <Properties>
@@ -110,6 +113,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Visiteur"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisiteurActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
