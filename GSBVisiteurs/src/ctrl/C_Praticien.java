@@ -69,9 +69,9 @@ public class C_Praticien extends C_Abstrait {
      *
      */
     public void suivant(){
-         int index = getVue().getCbChercher().getSelectedIndex()+1;
-         if(index== getVue().getCbChercher().getItemCount()) index=0;
-         getVue().getCbChercher().setSelectedIndex(index);
+         int index = getVue().getCbChercher().getSelectedIndex()+1; //méthode attribuant à la variable index l'id du praticien sélectionné incrémenté de 1
+         if(index== getVue().getCbChercher().getItemCount()) index=0; //si index est égale à l'id max de la liste des praticiens celui-ci redevient 0 afin de revenir au début de la liste
+         getVue().getCbChercher().setSelectedIndex(index); //
         // combo.hidePopup();
     }
      public void precedant(){
