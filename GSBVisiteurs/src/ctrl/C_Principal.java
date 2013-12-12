@@ -24,6 +24,7 @@ public class C_Principal {
     private C_Visiteur ctrlVisiteur = null;
     private C_Menu ctrlMenu = null;
     private C_Connexion ctrlConnexion = null;
+    private C_Rapport ctrlRapport = null;
     
 
     /**
@@ -59,10 +60,10 @@ public class C_Principal {
                 visiteurQuitter();
                 break;
              case MENU_RAPPORT: 
-                menuMedicament();
+                menuRapport();
                 break;
             case RAPPORT_QUITTER:   
-                medicamentQuitter();
+                rapportQuitter();
                 break;
              case CONNEXION:   
                 connexionQuitter();
@@ -170,6 +171,32 @@ public class C_Principal {
         fenetre.setVisible(true);
     }
         private void connexionQuitter() {
+        if (ctrlMenu == null) {
+            ctrlMenu = new C_Menu(this);
+        }
+        fenetre.setVisible(false);
+        fenetre.setContentPane(ctrlMenu.getVue());
+        fenetre.setVisible(true);
+    }
+        private void menuRapport() {
+        if (ctrlRapport == null) {
+            ctrlRapport = new C_Rapport(this);
+        } else {
+            // si la le contrôleur et sa vue existent déjà
+            // il faut rafraîchir le contenu à partir de la base de données
+            ctrlRapport.actualiser();
+        }
+        // vuPresence est une fenêtre modale :
+        // -> vueMenu reste visible, mais n'est pas active
+        fenetre.setVisible(false);
+        fenetre.setContentPane(ctrlRapport.getVue());
+        fenetre.setVisible(true);
+    }
+
+    /**
+     * Transition vuePresence / vueMenu
+     */
+    private void rapportQuitter() {
         if (ctrlMenu == null) {
             ctrlMenu = new C_Menu(this);
         }
