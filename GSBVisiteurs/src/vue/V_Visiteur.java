@@ -5,6 +5,7 @@
 package vue;
 
 import ctrl.C_Abstrait;
+import ctrl.C_Visiteur;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
@@ -15,6 +16,7 @@ import javax.swing.JTextField;
  */
 public class V_Visiteur extends V_Abstraite {
 DefaultComboBoxModel mcbChercher;
+DefaultComboBoxModel mcbLabo;
     /**
      * Creates new form V_Connexion
      */
@@ -23,6 +25,16 @@ DefaultComboBoxModel mcbChercher;
         initComponents();
         mcbChercher= new DefaultComboBoxModel();
         cbChercher.setModel(mcbChercher);
+        mcbLabo= new DefaultComboBoxModel();
+        cbLabo.setModel(mcbLabo);
+    }
+
+    public DefaultComboBoxModel getMcbLabo() {
+        return mcbLabo;
+    }
+
+    public void setMcbLabo(DefaultComboBoxModel mcbLabo) {
+        this.mcbLabo = mcbLabo;
     }
 
     public DefaultComboBoxModel getMcbChercher() {
@@ -292,17 +304,17 @@ DefaultComboBoxModel mcbChercher;
     }//GEN-LAST:event_btnOkActionPerformed
 
     private void btnSuivantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuivantActionPerformed
-        // TODO add your handling code here:
+         ((C_Visiteur)controleur).suivant();
     }//GEN-LAST:event_btnSuivantActionPerformed
 
     private void btnFermerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFermerActionPerformed
-        // TODO add your handling code here:
+          ((C_Visiteur)controleur).visiteurQuitter();
         
         
     }//GEN-LAST:event_btnFermerActionPerformed
 
     private void cbChercherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbChercherActionPerformed
-        // TODO add your handling code here:
+        ((C_Visiteur)controleur).visiteurSelectionner();
     }//GEN-LAST:event_cbChercherActionPerformed
 
     private void cbLaboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLaboActionPerformed
@@ -310,7 +322,7 @@ DefaultComboBoxModel mcbChercher;
     }//GEN-LAST:event_cbLaboActionPerformed
 
     private void btnPrecedentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrecedentActionPerformed
-        // TODO add your handling code here:
+          ((C_Visiteur)controleur).precedant();
     }//GEN-LAST:event_btnPrecedentActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

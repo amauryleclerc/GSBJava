@@ -21,6 +21,7 @@ import vue.V_Visiteur;
 public class C_Visiteur extends C_Abstrait {
     
    private DaoVisiteur daoVisiteur = new DaoVisiteur();
+   private DaoLabo daoLabo = new DaoLabo();
 
 
     public C_Visiteur(C_Principal ctrlPrincipal) {
@@ -32,6 +33,7 @@ public class C_Visiteur extends C_Abstrait {
     public final void actualiser() {
         try {
             chargerListeVisiteur();
+          chargerListeLabo();
           visiteurSelectionner();
         } catch (DaoException ex) {
             JOptionPane.showMessageDialog(getVue(), "CtrlVisiteur - actualiser - " + ex.getMessage(), "Saisie des Médicaments", JOptionPane.ERROR_MESSAGE);
@@ -54,13 +56,18 @@ public class C_Visiteur extends C_Abstrait {
             msg = "Saisie incomplète";
             typeMsg = JOptionPane.WARNING_MESSAGE;
         } else {
-        
+      
         getVue().getTxtAdresse().setText(visiteurSelect.getVis_Adresse());
         getVue().getTxtCodePostal().setText(visiteurSelect.getVis_Cp());
         getVue().getTxtNom().setText(visiteurSelect.getVis_Nom());
         getVue().getTxtPrenom().setText(visiteurSelect.getVis_Prenom());
         getVue().getTxtVille().setText(visiteurSelect.getVis_Ville());
-             
+        if(visiteurSelect.getSecteur()!=null){
+        getVue().getTxtSecteur().setText(visiteurSelect.getSecteur().getSec_Libelle());
+        }
+        if(visiteurSelect.getLabo()!=null){
+        getVue().getMcbLabo().setSelectedItem(visiteurSelect.getLabo());
+        }
     }
     }
     /**
@@ -100,6 +107,14 @@ public class C_Visiteur extends C_Abstrait {
         getVue().getMcbChercher().removeAllElements();
         for (Visiteur unVisiteur : lesVisiteurs) {
             getVue().getMcbChercher().addElement(unVisiteur);
+        }
+    }
+    
+    private void chargerListeLabo() throws DaoException {
+        List<Labo> lesLabos = daoLabo.getAll();
+        getVue().getMcbLabo().removeAllElements();
+        for (Labo unLabo : lesLabos) {
+            getVue().getMcbLabo().addElement(unLabo);
         }
     }
 

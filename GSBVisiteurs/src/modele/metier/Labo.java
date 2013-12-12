@@ -21,7 +21,7 @@ public class Labo {
 
     @Override
     public String toString() {
-        return "Labo{" + "lab_Code=" + lab_Code + ", lab_Nom=" + lab_Nom + ", lab_ChefVente=" + lab_ChefVente + '}';
+        return lab_Code + " " + lab_Nom;
     }
 
     public String getLab_Code() {

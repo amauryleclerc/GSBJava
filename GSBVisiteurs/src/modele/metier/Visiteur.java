@@ -4,6 +4,8 @@
  */
 package modele.metier;
 
+import java.util.Date;
+
 /**
  *
  * @author btssio
@@ -15,11 +17,11 @@ public class Visiteur {
     String vis_Adresse;
     String vis_Cp;
     String vis_Ville;
-    String vis_DateEmbauche;
+    Date vis_DateEmbauche;
     Labo labo;
     Secteur secteur;
 
-    public Visiteur(String vis_Matricule, String vis_Nom, String vis_Prenom, String vis_Adresse, String vis_Cp, String vis_Ville, String vis_DateEmbauche, Labo labo, Secteur secteur) {
+    public Visiteur(String vis_Matricule, String vis_Nom, String vis_Prenom, String vis_Adresse, String vis_Cp, String vis_Ville, Date vis_DateEmbauche, Labo labo, Secteur secteur) {
         this.vis_Matricule = vis_Matricule;
         this.vis_Nom = vis_Nom;
         this.vis_Prenom = vis_Prenom;
@@ -33,7 +35,7 @@ public class Visiteur {
 
     @Override
     public String toString() {
-        return "Visiteur{" + "vis_Matricule=" + vis_Matricule + ", vis_Nom=" + vis_Nom + ", vis_Prenom=" + vis_Prenom + ", vis_Adresse=" + vis_Adresse + ", vis_Cp=" + vis_Cp + ", vis_Ville=" + vis_Ville + ", vis_DateEmbauche=" + vis_DateEmbauche + ", labo=" + labo + ", secteur=" + secteur + '}';
+        return vis_Matricule +" "+ vis_Nom +" "+ vis_Prenom;
     }
 
     public String getVis_Matricule() {
@@ -84,11 +86,11 @@ public class Visiteur {
         this.vis_Ville = vis_Ville;
     }
 
-    public String getVis_DateEmbauche() {
+    public Date getVis_DateEmbauche() {
         return vis_DateEmbauche;
     }
 
-    public void setVis_DateEmbauche(String vis_DateEmbauche) {
+    public void setVis_DateEmbauche(Date vis_DateEmbauche) {
         this.vis_DateEmbauche = vis_DateEmbauche;
     }
 
