@@ -4,17 +4,86 @@
  */
 package vue;
 
+import ctrl.C_Abstrait;
+import ctrl.C_Rapport;
+import ctrl.C_Visiteur;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author btssio
  */
-public class V_RapportDeVisite extends javax.swing.JPanel {
-
+public class V_RapportDeVisite extends V_Abstraite {
+    DefaultComboBoxModel mcbRapport;
     /**
      * Creates new form V_Connexion
      */
-    public V_RapportDeVisite() {
+    public V_RapportDeVisite(C_Abstrait ctrlAbstrait) {
+        super(ctrlAbstrait);
         initComponents();
+            mcbRapport= new DefaultComboBoxModel();
+        cbRapport.setModel(mcbRapport);
+    }
+
+    public DefaultComboBoxModel getMcbRapport() {
+        return mcbRapport;
+    }
+
+    public void setMcbRapport(DefaultComboBoxModel mcbRapport) {
+        this.mcbRapport = mcbRapport;
+    }
+    
+    
+    public JComboBox getCbPraticien() {
+        return cbPraticien;
+    }
+
+    public void setCbPraticien(JComboBox cbPraticien) {
+        this.cbPraticien = cbPraticien;
+    }
+
+    public JComboBox getCbRapport() {
+        return cbRapport;
+    }
+
+    public void setCbRapport(JComboBox cbRapport) {
+        this.cbRapport = cbRapport;
+    }
+
+    public JTable getTbEchantillons() {
+        return tbEchantillons;
+    }
+
+    public void setTbEchantillons(JTable tbEchantillons) {
+        this.tbEchantillons = tbEchantillons;
+    }
+
+    public JTextArea getTxtBilan() {
+        return txtBilan;
+    }
+
+    public void setTxtBilan(JTextArea txtBilan) {
+        this.txtBilan = txtBilan;
+    }
+
+    public JTextField getTxtDateRapport() {
+        return txtDateRapport;
+    }
+
+    public void setTxtDateRapport(JTextField txtDateRapport) {
+        this.txtDateRapport = txtDateRapport;
+    }
+
+    public JTextField getTxtMotifVisite() {
+        return txtMotifVisite;
+    }
+
+    public void setTxtMotifVisite(JTextField txtMotifVisite) {
+        this.txtMotifVisite = txtMotifVisite;
     }
 
     /**
@@ -28,7 +97,7 @@ public class V_RapportDeVisite extends javax.swing.JPanel {
 
         btnFermer = new javax.swing.JToggleButton();
         lbRapportVisite = new javax.swing.JLabel();
-        lbNouveauRapport = new javax.swing.JLabel();
+        lbRapport = new javax.swing.JLabel();
         lbPraticien = new javax.swing.JLabel();
         lbDateRapport = new javax.swing.JLabel();
         lbMotifVisite = new javax.swing.JLabel();
@@ -37,7 +106,6 @@ public class V_RapportDeVisite extends javax.swing.JPanel {
         txtDateRapport = new javax.swing.JTextField();
         cbPraticien = new javax.swing.JComboBox();
         btnDetails = new javax.swing.JToggleButton();
-        txtNouveauRapport = new javax.swing.JTextField();
         txtMotifVisite = new javax.swing.JTextField();
         btnPrecedent = new javax.swing.JToggleButton();
         btnSuivant = new javax.swing.JToggleButton();
@@ -46,6 +114,7 @@ public class V_RapportDeVisite extends javax.swing.JPanel {
         txtBilan = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbEchantillons = new javax.swing.JTable();
+        cbRapport = new javax.swing.JComboBox();
 
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -60,7 +129,7 @@ public class V_RapportDeVisite extends javax.swing.JPanel {
 
         lbRapportVisite.setText("Rapport de visite");
 
-        lbNouveauRapport.setText("nouveau rapport");
+        lbRapport.setText("Rapport");
 
         lbPraticien.setText("praticien");
 
@@ -82,6 +151,11 @@ public class V_RapportDeVisite extends javax.swing.JPanel {
         });
 
         btnPrecedent.setText("precedent");
+        btnPrecedent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrecedentActionPerformed(evt);
+            }
+        });
 
         btnSuivant.setText("suivant");
         btnSuivant.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +188,13 @@ public class V_RapportDeVisite extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tbEchantillons);
 
+        cbRapport.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbRapport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbRapportActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,7 +202,7 @@ public class V_RapportDeVisite extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbNouveauRapport)
+                    .addComponent(lbRapport)
                     .addComponent(lbBilan, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(lbMotifVisite, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -129,11 +210,11 @@ public class V_RapportDeVisite extends javax.swing.JPanel {
                         .addComponent(lbDateRapport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbRapport, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cbPraticien, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtNouveauRapport, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMotifVisite, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDateRapport, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -149,7 +230,7 @@ public class V_RapportDeVisite extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbOffreEchantillon)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(323, 323, 323)
                 .addComponent(lbRapportVisite)
@@ -162,8 +243,8 @@ public class V_RapportDeVisite extends javax.swing.JPanel {
                 .addComponent(lbRapportVisite)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbNouveauRapport)
-                    .addComponent(txtNouveauRapport, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbRapport)
+                    .addComponent(cbRapport, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbPraticien)
@@ -206,11 +287,11 @@ public class V_RapportDeVisite extends javax.swing.JPanel {
     }//GEN-LAST:event_btnDetailsActionPerformed
 
     private void btnSuivantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuivantActionPerformed
-        // TODO add your handling code here:
+             ((C_Rapport)controleur).suivant();
     }//GEN-LAST:event_btnSuivantActionPerformed
 
     private void btnFermerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFermerActionPerformed
-        // TODO add your handling code here:
+          ((C_Rapport)controleur).rapportQuitter();
         
         
     }//GEN-LAST:event_btnFermerActionPerformed
@@ -219,6 +300,14 @@ public class V_RapportDeVisite extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNouveauActionPerformed
 
+    private void cbRapportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRapportActionPerformed
+            ((C_Rapport)controleur).rapportSelectionner();
+    }//GEN-LAST:event_cbRapportActionPerformed
+
+    private void btnPrecedentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrecedentActionPerformed
+      ((C_Rapport)controleur).precedant();
+    }//GEN-LAST:event_btnPrecedentActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnDetails;
     private javax.swing.JToggleButton btnFermer;
@@ -226,19 +315,19 @@ public class V_RapportDeVisite extends javax.swing.JPanel {
     private javax.swing.JToggleButton btnPrecedent;
     private javax.swing.JToggleButton btnSuivant;
     private javax.swing.JComboBox cbPraticien;
+    private javax.swing.JComboBox cbRapport;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbBilan;
     private javax.swing.JLabel lbDateRapport;
     private javax.swing.JLabel lbMotifVisite;
-    private javax.swing.JLabel lbNouveauRapport;
     private javax.swing.JLabel lbOffreEchantillon;
     private javax.swing.JLabel lbPraticien;
+    private javax.swing.JLabel lbRapport;
     private javax.swing.JLabel lbRapportVisite;
     private javax.swing.JTable tbEchantillons;
     private javax.swing.JTextArea txtBilan;
     private javax.swing.JTextField txtDateRapport;
     private javax.swing.JTextField txtMotifVisite;
-    private javax.swing.JTextField txtNouveauRapport;
     // End of variables declaration//GEN-END:variables
 }
