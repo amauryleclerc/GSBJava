@@ -19,6 +19,7 @@ import javax.swing.JTextField;
  */
 public class V_RapportDeVisite extends V_Abstraite {
     DefaultComboBoxModel mcbRapport;
+     DefaultComboBoxModel mcbPraticien;
     /**
      * Creates new form V_Connexion
      */
@@ -27,6 +28,16 @@ public class V_RapportDeVisite extends V_Abstraite {
         initComponents();
             mcbRapport= new DefaultComboBoxModel();
         cbRapport.setModel(mcbRapport);
+                mcbPraticien= new DefaultComboBoxModel();
+        cbPraticien.setModel(mcbPraticien);
+    }
+
+    public DefaultComboBoxModel getMcbPraticien() {
+        return mcbPraticien;
+    }
+
+    public void setMcbPraticien(DefaultComboBoxModel mcbPraticien) {
+        this.mcbPraticien = mcbPraticien;
     }
 
     public DefaultComboBoxModel getMcbRapport() {

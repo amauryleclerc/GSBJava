@@ -30,8 +30,7 @@ public class DaoLabo implements DaoInterface<Labo, Integer> {
      * @return objet métier trouvé, ou null sinon
      * @throws Exception
      */
-    @Override
-    public Labo getOne(Integer idLabo) throws DaoException {
+        public Labo getOne(String idLabo) throws DaoException {
         Labo result = null;
         ResultSet rs = null;
         // préparer la requête
@@ -39,7 +38,7 @@ public class DaoLabo implements DaoInterface<Labo, Integer> {
                                 + " WHERE LAB_CODE=?";
         try {
             PreparedStatement ps = Jdbc.getInstance().getConnexion().prepareStatement(requete);
-            ps.setInt(1, idLabo);
+            ps.setString(1, idLabo);
             rs = ps.executeQuery();
             if (rs.next()) {
                 result = chargerUnEnregistrement(rs);
@@ -125,5 +124,10 @@ public class DaoLabo implements DaoInterface<Labo, Integer> {
             throw new DaoException("DaoLabo - chargerUnEnregistrement : pb JDBC\n" + ex.getMessage());
         }
     } 
+
+    @Override
+    public Labo getOne(Integer idMetier) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

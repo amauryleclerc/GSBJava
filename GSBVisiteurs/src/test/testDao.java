@@ -10,9 +10,11 @@ import java.sql.SQLException;
 import java.util.List;
 import modele.dao.DaoException;
 import modele.dao.DaoMedicament;
+import modele.dao.DaoVisiteur;
 import modele.jdbc.FabriqueJdbc;
 import modele.jdbc.Jdbc;
 import modele.metier.Medicament;
+import modele.metier.Visiteur;
 
 /**
  *
@@ -20,6 +22,7 @@ import modele.metier.Medicament;
  */
 public class testDao {
         static DaoMedicament daoMedicament = new DaoMedicament();
+         static DaoVisiteur daoVisiteur = new DaoVisiteur();
 
     // test de lecture des enregistrements de la table PRESENCE pour un équipier donné
     public static boolean testDaoLireMedicament() throws DaoException {
@@ -31,6 +34,16 @@ public class testDao {
         }
         return ok;
     }
+        public static boolean testDaoLireVisiteur() throws DaoException {
+        boolean ok = true;
+        List<Visiteur> desVisiteurs = daoVisiteur.getAll();
+        System.out.println("Liste des Visiteurs");
+        for (Visiteur visiteur : desVisiteurs ) {
+            System.out.println(visiteur);
+            System.out.println(visiteur.getVis_DateEmbauche());
+        }
+        return ok;
+    }
     public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException, SQLException, DaoException {
         System.out.println("Tests unitaires DAO");
         FabriqueJdbc.creer("gsbVisiteurJdbc.properties");
@@ -39,6 +52,12 @@ public class testDao {
 
         System.out.println("\nTest DAO Lire Medicament");
         if (testDaoLireMedicament()) {
+            System.out.println("+++ Réussite");
+        } else {
+            System.out.println("--- Echec");
+        }
+                System.out.println("\nTest DAO Lire Visiteur");
+        if (testDaoLireVisiteur()) {
             System.out.println("+++ Réussite");
         } else {
             System.out.println("--- Echec");

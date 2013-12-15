@@ -29,7 +29,7 @@ public class Rapport_Visite {
 
     @Override
     public String toString() {
-        return "Rapport_Visite{" + "visiteur=" + visiteur + ", rap_Num=" + rap_Num + ", practicien=" + practicien + ", rap_Date=" + rap_Date + ", rap_Bilan=" + rap_Bilan + ", rap_Motif=" + rap_Motif + '}';
+        return "Rapport De Visite N " + rap_Num;
     }
 
     public Visiteur getVisiteur() {

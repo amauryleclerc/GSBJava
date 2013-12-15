@@ -22,7 +22,7 @@ import vue.V_Visiteur;
 public class C_Rapport extends C_Abstrait {
    
    private DaoRapport daoRapport = new DaoRapport();
-   
+   private DaoPraticien daoPraticien = new DaoPraticien();
 
 
     public C_Rapport(C_Principal ctrlPrincipal) {
@@ -59,6 +59,7 @@ public class C_Rapport extends C_Abstrait {
                getVue().getTxtBilan().setText(rapportSelect.getRap_Bilan());
                getVue().getTxtDateRapport().setText(rapportSelect.getRap_Date().toString());
                getVue().getTxtMotifVisite().setText(rapportSelect.getRap_Motif());
+                getVue().getMcbPraticien().setSelectedItem(rapportSelect.getPracticien());
 
     }
     }
@@ -99,6 +100,13 @@ public class C_Rapport extends C_Abstrait {
         getVue().getMcbRapport().removeAllElements();
         for (Rapport_Visite unRapport : lesRapports) {
             getVue().getMcbRapport().addElement(unRapport);
+        }
+    }
+        private void chargerListePratcien() throws DaoException {
+        List<Praticien> lesPraticiens = daoPraticien.getAll();
+        getVue().getMcbPraticien().removeAllElements();
+        for (Praticien unPraticien : lesPraticiens) {
+            getVue().getMcbPraticien().addElement(unPraticien);
         }
     }
     

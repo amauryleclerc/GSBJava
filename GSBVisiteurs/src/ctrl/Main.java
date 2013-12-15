@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Properties;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import modele.jdbc.FabriqueJdbc;
 import modele.jdbc.Jdbc;
 

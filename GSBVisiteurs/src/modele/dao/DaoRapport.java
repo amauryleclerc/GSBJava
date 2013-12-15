@@ -14,7 +14,8 @@ import java.util.*;
  * Classe DAO pour la classe Rapport
  */
 public class DaoRapport implements DaoInterface<Rapport_Visite, Integer> {
-
+    private DaoVisiteur daoVisiteur = new DaoVisiteur();
+    private DaoPraticien daoPraticien = new DaoPraticien();
     /**
      * Non implémenté
      */
@@ -36,8 +37,6 @@ public class DaoRapport implements DaoInterface<Rapport_Visite, Integer> {
         ResultSet rs = null;
         // préparer la requête
         String requete = "SELECT * FROM VISITEUR"
-                + " LEFT OUTER JOIN VISITEUR ON RAPPORT_VISITE.VIS_MATRICULE=VISITEUR.VIS_MATRICULE"
-                + " LEFT OUTER JOIN PRATICIEN ON RAPPORT_VISITE.PRA_NUM=PRATICIEN.PRA_NUM"
                 + " WHERE RAP_NUM=?";
         try {
             PreparedStatement ps = Jdbc.getInstance().getConnexion().prepareStatement(requete);
@@ -63,9 +62,7 @@ public class DaoRapport implements DaoInterface<Rapport_Visite, Integer> {
         ArrayList<Rapport_Visite> result = new ArrayList<Rapport_Visite>();
         ResultSet rs;
         // préparer la requête
-        String requete = "SELECT * FROM RAPPORT_VISITE"
-                + " LEFT OUTER JOIN VISITEUR ON RAPPORT_VISITE.VIS_MATRICULE=VISITEUR.VIS_MATRICULE"
-                + " LEFT OUTER JOIN PRATICIEN ON RAPPORT_VISITE.PRA_NUM=PRATICIEN.PRA_NUM";
+        String requete = "SELECT * FROM RAPPORT_VISITE";
         try {
             PreparedStatement ps = Jdbc.getInstance().getConnexion().prepareStatement(requete);
             rs = ps.executeQuery();
@@ -119,28 +116,9 @@ public class DaoRapport implements DaoInterface<Rapport_Visite, Integer> {
        rapport.setRap_Date(rs.getDate("RAP_DATE"));
        rapport.setRap_Motif(rs.getString("RAP_MOTIF"));
        rapport.setRap_Num(rs.getInt("RAP_NUM"));
-       if(rs.getString("PRA_NUM")!=null){
-           Praticien praticien=new Praticien(0,null,null,null,null,null,null,null);
-             praticien.setPra_Num(rs.getInt("PRA_NUM"));
-            praticien.setPra_Nom(rs.getString("PRA_NOM"));
-            praticien.setPra_Prenom(rs.getString("PRA_PRENOM"));
-            praticien.setPra_Adresse(rs.getString("PRA_ADRESSE"));
-            praticien.setPra_Cp(rs.getString("PRA_CP"));
-            praticien.setPra_Ville(rs.getString("PRA_VILLE"));
-            praticien.setPra_CoefNotoriete(rs.getFloat("PRA_COEFNOTORIETE"));
-            rapport.setPracticien(praticien);
-       }   
-        if(rs.getString("VIS_MATRICULE")!=null){
-            Visiteur visiteur = new Visiteur(null,null,null,null,null,null,null,null,null);
-      
-            visiteur.setVis_Matricule(rs.getString("VIS_MATRICULE"));
-            visiteur.setVis_Nom(rs.getString("VIS_NOM"));
-            visiteur.setVis_Prenom(rs.getString("VIS_PRENOM"));
-            visiteur.setVis_Adresse(rs.getString("VIS_ADRESSE"));
-            visiteur.setVis_Cp(rs.getString("VIS_CP"));
-            visiteur.setVis_Ville(rs.getString("VIS_VILLE"));
-            rapport.setVisiteur(visiteur);
-        }
+       rapport.setVisiteur(daoVisiteur.getOne(rs.getString("VIS_MATRICULE")));
+       rapport.setPracticien(daoPraticien.getOne(rs.getInt("PRA_NUM")));
+   
             
             
             return rapport;

@@ -6,8 +6,11 @@
 package ctrl;
 
 import static ctrl.EnumAction.MENU_FICHIER_QUITTER;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -23,13 +26,13 @@ import vue.V_Connexion;
  */
 public class C_Connexion extends C_Abstrait {
     
-   private DaoPraticien daoPraticien = new DaoPraticien();
+   private DaoVisiteur daoVisiteur = new DaoVisiteur();
 
 
     public C_Connexion(C_Principal ctrlPrincipal) {
         super(ctrlPrincipal);
         vue = new V_Connexion(this);
-        actualiser();
+       // actualiser();
     }
     public void seConnecter() {
         // Déclarations de variables locales
@@ -37,99 +40,53 @@ public class C_Connexion extends C_Abstrait {
         String msg = ""; // message à afficher à l'issue de la mise à jour
         int typeMsg = 0;
         String login = null;
-        String password =null;
+     //   String passwordTxt =null;
+      //  Date password = new Date((Date)getVue().getTxtPassword().getValue());
         //récupération des valeur du formulaire
         login = getVue().getTxtLogin().getText();
-        password = getVue().getTxtPassword().getText();
-          //(CodeEtat) getVue().getjComboBoxEtatPresence().getSelectedItem();
+       // password = getVue().getTxtPassword().getValue();
+        try{
+        Date password = new  Date(getVue().getTxtPassword().getText());
+ 
+
 
             try {
-                if(!daoPraticien.verification(login, password)){
+                if(!daoVisiteur.verification(login, password)){
                  msg = "mauvais login ou mot de passe";
                    typeMsg = JOptionPane.WARNING_MESSAGE;
                 } else {
                  this.getCtrlPrincipal().action(EnumAction.CONNEXION);
-                    msg = "Bienvenue";
-                    typeMsg = JOptionPane.INFORMATION_MESSAGE;
             }
             } catch (DaoException ex) {
                 msg = "CtrlConnexion - seConnecter() - " + ex.getMessage();
                 typeMsg = JOptionPane.ERROR_MESSAGE;
             } 
-       
-       JOptionPane.showMessageDialog(getVue(), msg, "Connexion", typeMsg);
-        
-    }
-
-    public final void actualiser() {
-    /*    try {
-            chargerListeEquipiers();
-            chargerLesCodesEtat();
-        } catch (DaoException ex) {
-            JOptionPane.showMessageDialog(getVue(), "CtrlPresence - actualiser - " + ex.getMessage(), "Saisie des présences", JOptionPane.ERROR_MESSAGE);
-        }*/
-    }
-
-    /**
-     * presenceEnregistrer réaction au clic sur le bouton VALIDER de la vue
-     * VuePresences
-     */
-    /*
-    public void presenceEnregistrer() {
-        // Déclarations de variables locales
-        int nb = 0; // valeur de retour de l'opération de mise à jour
-        String msg = ""; // message à afficher à l'issue de la mise à jour
-        int typeMsg = 0;
-        // Lire et contrôler les données du formulaire
-        // récupérer l'Equipier sélectionné
-        Equipier equipierSelect = (Equipier) getVue().getjComboBoxEquipier().getSelectedItem();
-        Jour dateSelect = new Jour(getVue().getjDateChooserDatePresence().getDate().getTime());
-        CodeEtat etatPresenceSelect = (CodeEtat) getVue().getjComboBoxEtatPresence().getSelectedItem();
-        if (equipierSelect == null || dateSelect == null || etatPresenceSelect == null) {
-            //Saisie incomplète
-            msg = "Saisie incomplète";
-            typeMsg = JOptionPane.WARNING_MESSAGE;
-        } else {
-            try {
-                // n° d'identification de cet équipier
-                int id = equipierSelect.getId();
-                // récupérer la liste des présences actuelles pour cet équipier
-                equipierSelect.setLesPresences(daoPresence.getListePresences(id));
-                // rechercher la date saisie dans cette liste
-                Presence presenceRecherchee = equipierSelect.rechercherUnePresence(dateSelect);
-                if (presenceRecherchee != null) {
-                    // si elle est déjà présente, la mettre à jour
-                    presenceRecherchee.setEtatPresence(etatPresenceSelect);
-                    nb = daoPresence.update(id, presenceRecherchee);
-                    msg = "Présence mise à jour";
-                    typeMsg = JOptionPane.INFORMATION_MESSAGE;
-                } else {
-                    // sinon, l'ajouter
-                    presenceRecherchee = new Presence(dateSelect, etatPresenceSelect);
-                    nb = daoPresence.create(id, presenceRecherchee);
-                    msg = "Présence ajoutée";
-                    typeMsg = JOptionPane.INFORMATION_MESSAGE;
-                }
-                // On vérifie qu'au moins un enregistrement a été ajouté ou modifié
-                if (nb == 0) {
-                    msg = "La mise à jour a échoué";
-                    typeMsg = JOptionPane.WARNING_MESSAGE;
-                }
-
-            } catch (DaoException ex) {
-                msg = "CtrlPresence - presenceEnregistrer() - " + ex.getMessage();
+                   } catch (java.lang.IllegalArgumentException il) {
+                msg = "le format du mot de passe est mauvais";
                 typeMsg = JOptionPane.ERROR_MESSAGE;
-            }
-            JOptionPane.showMessageDialog(getVue(), msg, "Saisie des présences", typeMsg);
-        }
+            } 
+       if(!msg.isEmpty()){
+       JOptionPane.showMessageDialog(getVue(), msg, "Connexion", typeMsg);
+       }
     }
-*/
+
+  
+
+
     /**
      * presenceAnnuler réaction au clic sur le bouton ANNULER de la vue Le
      * contrôle est rendu au contrôleur frontal
      */
     public void connexionQuitter() {
         this.getCtrlPrincipal().action(EnumAction.MENU_FICHIER_QUITTER);
+    }
+        public void fichierQuitter() {
+        // Confirmer avant de quitter
+        int rep = JOptionPane.showConfirmDialog(getVue(), "Quitter l'application\nEtes-vous sûr(e) ?", "Ambulances", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (rep == JOptionPane.YES_OPTION) {
+            // mettre fin à l'application
+            this.getCtrlPrincipal().action(EnumAction.MENU_FICHIER_QUITTER);
+        }
     }
 
     @Override

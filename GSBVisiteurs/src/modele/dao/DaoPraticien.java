@@ -36,7 +36,7 @@ public class DaoPraticien implements DaoInterface<Praticien, Integer> {
         ResultSet rs = null;
         // préparer la requête
         String requete = "SELECT * FROM PRATICIEN"
-                + " LEFT JOIN TYPE_PRATICIEN ON PRATICIEN.TYP_CODE=TYP_PRATICIEN.TYP_CODE"
+                + " LEFT JOIN TYPE_PRATICIEN ON PRATICIEN.TYP_CODE=TYPE_PRATICIEN.TYP_CODE"
                 + " WHERE PRA_NUM=?";
         try {
             PreparedStatement ps = Jdbc.getInstance().getConnexion().prepareStatement(requete);
@@ -93,24 +93,7 @@ public class DaoPraticien implements DaoInterface<Praticien, Integer> {
     public int delete(Integer idMetier) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    public boolean verification(String login, String password) throws DaoException{
-         boolean result = false;
-        ResultSet rs = null;
-        // préparer la requête
-        String requete = "SELECT * FROM PRATICIEN WHERE PRA_NOM=?";
-        try {
-            PreparedStatement ps = Jdbc.getInstance().getConnexion().prepareStatement(requete);
-            ps.setString(1, login);
-            rs = ps.executeQuery();
-            if (rs.next()) {
-                result=true;
-            }
-        } catch (SQLException ex) {
-            throw new modele.dao.DaoException("DaoPraticien::getOne : erreur requete SELECT : " + ex.getMessage());
-        }
-        
-        return result;
-    }
+  
 
     //----------------------------------------------------------------------
     //  Méthodes privées
