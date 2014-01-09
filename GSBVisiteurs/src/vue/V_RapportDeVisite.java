@@ -12,6 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,6 +21,7 @@ import javax.swing.JTextField;
 public class V_RapportDeVisite extends V_Abstraite {
     DefaultComboBoxModel mcbRapport;
      DefaultComboBoxModel mcbPraticien;
+     DefaultTableModel mtEchantillon;
     /**
      * Creates new form V_Connexion
      */
@@ -30,6 +32,24 @@ public class V_RapportDeVisite extends V_Abstraite {
         cbRapport.setModel(mcbRapport);
                 mcbPraticien= new DefaultComboBoxModel();
         cbPraticien.setModel(mcbPraticien);
+        mtEchantillon= new DefaultTableModel(
+            new Object [][] {
+                {null, null},
+
+            },
+            new String [] {
+                "Medicament", "Nb échantillon"
+            }
+        );
+       tbEchantillons.setModel(mtEchantillon);
+    }
+
+    public DefaultTableModel getMtEchantillon() {
+        return mtEchantillon;
+    }
+
+    public void setMtEchantillon(DefaultTableModel mtEchantillon) {
+        this.mtEchantillon = mtEchantillon;
     }
 
     public DefaultComboBoxModel getMcbPraticien() {

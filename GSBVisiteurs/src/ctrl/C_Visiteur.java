@@ -64,6 +64,8 @@ public class C_Visiteur extends C_Abstrait {
         getVue().getTxtVille().setText(visiteurSelect.getVis_Ville());
         if(visiteurSelect.getSecteur()!=null){
         getVue().getTxtSecteur().setText(visiteurSelect.getSecteur().getSec_Libelle());
+        }else{
+            getVue().getTxtSecteur().setText("pas de secteur");
         }
         if(visiteurSelect.getLabo()!=null){
         getVue().getMcbLabo().setSelectedItem(visiteurSelect.getLabo());

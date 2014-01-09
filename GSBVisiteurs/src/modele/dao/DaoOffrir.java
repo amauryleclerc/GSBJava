@@ -11,16 +11,18 @@ import java.sql.*;
 import java.util.*;
 
 /**
- * Classe DAO pour la classe Rapport
+ * Classe DAO pour la classe Visiteur
  */
-public class DaoRapport implements DaoInterface<Rapport_Visite, Integer> {
-    private DaoVisiteur daoVisiteur = new DaoVisiteur();
-    private DaoPraticien daoPraticien = new DaoPraticien();
+public class DaoOffrir implements DaoInterface<Offrir, Integer> {
+  private DaoVisiteur daoVisiteur = new DaoVisiteur();
+    private DaoMedicament daoMedicament = new DaoMedicament();
+      private DaoRapport daoRapport = new DaoRapport();
+    
     /**
      * Non implémenté
      */
     @Override
-    public int create(Rapport_Visite unRapport) throws Exception {
+    public int create(Offrir unOffrir) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -32,21 +34,20 @@ public class DaoRapport implements DaoInterface<Rapport_Visite, Integer> {
      * @throws Exception
      */
     @Override
-    public Rapport_Visite getOne(Integer idRapport) throws DaoException {
-        Rapport_Visite result = null;
+    public Offrir getOne(Integer idOffrir) throws DaoException {
+        Offrir result = null;
         ResultSet rs = null;
         // préparer la requête
-        String requete = "SELECT * FROM RAPPORT_VISITE"
-                + " WHERE RAP_NUM=?";
+        String requete = "SELECT * FROM OFFRIR";
         try {
             PreparedStatement ps = Jdbc.getInstance().getConnexion().prepareStatement(requete);
-            ps.setInt(1, idRapport);
+            ps.setInt(1, idOffrir);
             rs = ps.executeQuery();
             if (rs.next()) {
                 result = chargerUnEnregistrement(rs);
             }
         } catch (SQLException ex) {
-            throw new modele.dao.DaoException("DaoRapport::getOne : erreur requete SELECT : " + ex.getMessage());
+            throw new modele.dao.DaoException("DaoOffrir::getOne : erreur requete SELECT : " + ex.getMessage());
         }
         return (result);
     }
@@ -58,21 +59,41 @@ public class DaoRapport implements DaoInterface<Rapport_Visite, Integer> {
      * EQUIPIER
      */
     @Override
-    public ArrayList<Rapport_Visite> getAll() throws DaoException {
-        ArrayList<Rapport_Visite> result = new ArrayList<Rapport_Visite>();
+    public ArrayList<Offrir> getAll() throws DaoException {
+        ArrayList<Offrir> result = new ArrayList<Offrir>();
         ResultSet rs;
         // préparer la requête
-        String requete = "SELECT * FROM RAPPORT_VISITE";
+        String requete = "SELECT * FROM OFFRIR";
         try {
             PreparedStatement ps = Jdbc.getInstance().getConnexion().prepareStatement(requete);
             rs = ps.executeQuery();
             // Charger les enregistrements dans la collection
             while (rs.next()) {
-                Rapport_Visite unRapport = chargerUnEnregistrement(rs);
-                result.add(unRapport);
+                Offrir unOffrir = chargerUnEnregistrement(rs);
+                result.add(unOffrir);
             }
         } catch (SQLException ex) {
-            throw new modele.dao.DaoException("DaoRapport::getAll : erreur requete SELECT : " + ex.getMessage());
+            throw new modele.dao.DaoException("DaoOffrir::getAll : erreur requete SELECT : " + ex.getMessage());
+        }
+        return result;
+    }
+    
+        public ArrayList<Offrir> getRapport(int rapNum) throws DaoException {
+        ArrayList<Offrir> result = new ArrayList<Offrir>();
+        ResultSet rs;
+        // préparer la requête
+        String requete = "SELECT * FROM OFFRIR WHERE RAP_NUM=?";
+        try {
+            PreparedStatement ps = Jdbc.getInstance().getConnexion().prepareStatement(requete);
+             ps.setInt(1, rapNum);
+            rs = ps.executeQuery();
+            // Charger les enregistrements dans la collection
+            while (rs.next()) {
+                Offrir unOffrir = chargerUnEnregistrement(rs);
+                result.add(unOffrir);
+            }
+        } catch (SQLException ex) {
+            throw new modele.dao.DaoException("DaoOffrir::getAll : erreur requete SELECT : " + ex.getMessage());
         }
         return result;
     }
@@ -81,7 +102,7 @@ public class DaoRapport implements DaoInterface<Rapport_Visite, Integer> {
      * Non implémenté
      */
     @Override
-    public int update(Integer idMetier, Rapport_Visite objetMetier) throws Exception {
+    public int update(Integer idMetier, Offrir objetMetier) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -92,8 +113,7 @@ public class DaoRapport implements DaoInterface<Rapport_Visite, Integer> {
     public int delete(Integer idMetier) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+  
 
     //----------------------------------------------------------------------
     //  Méthodes privées
@@ -109,21 +129,19 @@ public class DaoRapport implements DaoInterface<Rapport_Visite, Integer> {
      * @throws DaoException
      */
     
-    private Rapport_Visite chargerUnEnregistrement(ResultSet rs) throws DaoException {
+    private Offrir chargerUnEnregistrement(ResultSet rs) throws DaoException {
         try {
-            Rapport_Visite rapport = new Rapport_Visite(null,0,null,null,null,null);
-       rapport.setRap_Bilan(rs.getString("RAP_BILAN"));
-       rapport.setRap_Date(rs.getDate("RAP_DATE"));
-       rapport.setRap_Motif(rs.getString("RAP_MOTIF"));
-       rapport.setRap_Num(rs.getInt("RAP_NUM"));
-       rapport.setVisiteur(daoVisiteur.getOne(rs.getString("VIS_MATRICULE")));
-       rapport.setPracticien(daoPraticien.getOne(rs.getInt("PRA_NUM")));
-   
+            Offrir offrir = new Offrir(null,null,null,0);
+            offrir.setMedicament(daoMedicament.getOne(rs.getString("MED_DEPOTLEGAL")));
+            offrir.setRapport_visite(daoRapport.getOne(rs.getInt("RAP_NUM")));
+            offrir.setVisiteur(daoVisiteur.getOne(rs.getString("VIS_MATRICULE")));
+            offrir.setOff_Qte(rs.getInt("OFF_QTE"));
+  
             
-            
-            return rapport;
+          
+            return offrir;
         } catch (SQLException ex) {
-            throw new DaoException("DaoRapport - chargerUnEnregistrement : pb JDBC\n" + ex.getMessage());
+            throw new DaoException("DaoOffrir - chargerUnEnregistrement : pb JDBC\n" + ex.getMessage());
         }
     } 
     
