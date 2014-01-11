@@ -113,7 +113,27 @@ public class DaoOffrir implements DaoInterface<Offrir, Integer> {
     public int delete(Integer idMetier) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-  
+       public boolean ajouter(Offrir offrir) throws DaoException {
+        int nb;
+        boolean ok =true;
+        // préparer la requête
+        String requete = "INSERT INTO OFFRIR (VIS_MATRICULE,  RAP_NUM, MED_DEPOTLEGAL,  OFF_QTE) VALUES (?, ? , ? , ?)";
+        try {
+            PreparedStatement ps = Jdbc.getInstance().getConnexion().prepareStatement(requete);
+
+            ps.setString(1, offrir.getVisiteur().getVis_Matricule());
+    
+            ps.setInt(2, offrir.getRapport_visite().getRap_Num());
+          
+            ps.setString(3, offrir.getMedicament().getMed_DepotLegal());
+              ps.setInt(4, offrir.getOff_Qte());
+            nb = ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            throw new modele.dao.DaoException("DaoOffrir::ajouter : erreur requete INSERT : " + ex.getMessage());
+        }
+        return ok;
+    }
 
     //----------------------------------------------------------------------
     //  Méthodes privées
@@ -144,5 +164,7 @@ public class DaoOffrir implements DaoInterface<Offrir, Integer> {
             throw new DaoException("DaoOffrir - chargerUnEnregistrement : pb JDBC\n" + ex.getMessage());
         }
     } 
+
+ 
     
 }

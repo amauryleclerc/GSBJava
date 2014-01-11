@@ -8,10 +8,13 @@ import ctrl.C_Abstrait;
 import ctrl.C_Rapport;
 import ctrl.C_Visiteur;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JToggleButton;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,29 +22,40 @@ import javax.swing.table.DefaultTableModel;
  * @author btssio
  */
 public class V_RapportDeVisite extends V_Abstraite {
+
     DefaultComboBoxModel mcbRapport;
-     DefaultComboBoxModel mcbPraticien;
-     DefaultTableModel mtEchantillon;
+    DefaultComboBoxModel mcbPraticien;
+    DefaultComboBoxModel mcbVisiteur;
+    DefaultTableModel mtEchantillon;
+
     /**
      * Creates new form V_Connexion
      */
     public V_RapportDeVisite(C_Abstrait ctrlAbstrait) {
         super(ctrlAbstrait);
         initComponents();
-            mcbRapport= new DefaultComboBoxModel();
-        cbRapport.setModel(mcbRapport);
-                mcbPraticien= new DefaultComboBoxModel();
-        cbPraticien.setModel(mcbPraticien);
-        mtEchantillon= new DefaultTableModel(
-            new Object [][] {
-                {null, null},
+        mcbRapport = new DefaultComboBoxModel();
 
-            },
-            new String [] {
-                "Medicament", "Nb échantillon"
-            }
-        );
-       tbEchantillons.setModel(mtEchantillon);
+        mcbPraticien = new DefaultComboBoxModel();
+        mcbVisiteur = new DefaultComboBoxModel();
+        cbRapport.setModel(mcbRapport);
+        cbPraticien.setModel(mcbPraticien);
+        cbVisiteur.setModel(mcbVisiteur);
+        mtEchantillon = new DefaultTableModel(
+                new Object[][]{
+            {null, null},},
+                new String[]{
+            "Medicament", "Nb échantillon"
+        });
+        tbEchantillons.setModel(mtEchantillon);
+    }
+
+    public DefaultComboBoxModel getMcbVisiteur() {
+        return mcbVisiteur;
+    }
+
+    public void setMcbVisiteur(DefaultComboBoxModel mcbVisiteur) {
+        this.mcbVisiteur = mcbVisiteur;
     }
 
     public DefaultTableModel getMtEchantillon() {
@@ -67,8 +81,7 @@ public class V_RapportDeVisite extends V_Abstraite {
     public void setMcbRapport(DefaultComboBoxModel mcbRapport) {
         this.mcbRapport = mcbRapport;
     }
-    
-    
+
     public JComboBox getCbPraticien() {
         return cbPraticien;
     }
@@ -117,6 +130,70 @@ public class V_RapportDeVisite extends V_Abstraite {
         this.txtMotifVisite = txtMotifVisite;
     }
 
+    public JButton getBtnAjouter() {
+        return btnAjouter;
+    }
+
+    public void setBtnAjouter(JButton btnAjouter) {
+        this.btnAjouter = btnAjouter;
+    }
+
+    public JButton getBtnAjouterEch() {
+        return btnAjouterEch;
+    }
+
+    public void setBtnAjouterEch(JButton btnAjouterEch) {
+        this.btnAjouterEch = btnAjouterEch;
+    }
+
+    public JToggleButton getBtnFermer() {
+        return btnFermer;
+    }
+
+    public void setBtnFermer(JToggleButton btnFermer) {
+        this.btnFermer = btnFermer;
+    }
+
+    public JToggleButton getBtnNouveau() {
+        return btnNouveau;
+    }
+
+    public void setBtnNouveau(JToggleButton btnNouveau) {
+        this.btnNouveau = btnNouveau;
+    }
+
+    public JToggleButton getBtnPrecedent() {
+        return btnPrecedent;
+    }
+
+    public void setBtnPrecedent(JToggleButton btnPrecedent) {
+        this.btnPrecedent = btnPrecedent;
+    }
+
+    public JToggleButton getBtnSuivant() {
+        return btnSuivant;
+    }
+
+    public void setBtnSuivant(JToggleButton btnSuivant) {
+        this.btnSuivant = btnSuivant;
+    }
+
+    public JLabel getLbRapport() {
+        return lbRapport;
+    }
+
+    public void setLbRapport(JLabel lbRapport) {
+        this.lbRapport = lbRapport;
+    }
+
+    public JComboBox getCbVisiteur() {
+        return cbVisiteur;
+    }
+
+    public void setCbVisiteur(JComboBox cbVisiteur) {
+        this.cbVisiteur = cbVisiteur;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -136,7 +213,6 @@ public class V_RapportDeVisite extends V_Abstraite {
         lbOffreEchantillon = new javax.swing.JLabel();
         txtDateRapport = new javax.swing.JTextField();
         cbPraticien = new javax.swing.JComboBox();
-        btnDetails = new javax.swing.JToggleButton();
         txtMotifVisite = new javax.swing.JTextField();
         btnPrecedent = new javax.swing.JToggleButton();
         btnSuivant = new javax.swing.JToggleButton();
@@ -146,6 +222,10 @@ public class V_RapportDeVisite extends V_Abstraite {
         jScrollPane2 = new javax.swing.JScrollPane();
         tbEchantillons = new javax.swing.JTable();
         cbRapport = new javax.swing.JComboBox();
+        btnAjouter = new javax.swing.JButton();
+        lbPraticien1 = new javax.swing.JLabel();
+        cbVisiteur = new javax.swing.JComboBox();
+        btnAjouterEch = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -173,13 +253,6 @@ public class V_RapportDeVisite extends V_Abstraite {
         lbOffreEchantillon.setText("offre d'échantillon");
 
         cbPraticien.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        btnDetails.setText("détails");
-        btnDetails.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDetailsActionPerformed(evt);
-            }
-        });
 
         btnPrecedent.setText("precedent");
         btnPrecedent.addActionListener(new java.awt.event.ActionListener() {
@@ -226,46 +299,72 @@ public class V_RapportDeVisite extends V_Abstraite {
             }
         });
 
+        btnAjouter.setText("ajouter");
+        btnAjouter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAjouterActionPerformed(evt);
+            }
+        });
+
+        lbPraticien1.setText("visiteur");
+
+        cbVisiteur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btnAjouterEch.setText("Ajouter Echantillon");
+        btnAjouterEch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAjouterEchActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbRapport)
-                    .addComponent(lbBilan, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lbMotifVisite, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbPraticien)
-                        .addComponent(lbDateRapport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbRapport, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cbPraticien, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtMotifVisite, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDateRapport, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnPrecedent, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnSuivant, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnNouveau, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(143, 143, 143)
-                            .addComponent(btnFermer, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(323, 323, 323)
+                        .addComponent(lbRapportVisite))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbOffreEchantillon)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(75, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(323, 323, 323)
-                .addComponent(lbRapportVisite)
-                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(lbRapport)
+                            .addComponent(lbBilan, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lbMotifVisite, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbDateRapport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lbPraticien1)
+                            .addComponent(lbPraticien))
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtMotifVisite, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(btnPrecedent, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnSuivant, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnNouveau, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnAjouter)
+                                .addGap(65, 65, 65)
+                                .addComponent(btnFermer, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lbOffreEchantillon)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnAjouterEch))
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(cbPraticien, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbRapport, javax.swing.GroupLayout.Alignment.LEADING, 0, 371, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(cbVisiteur, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtDateRapport, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)))))
+                .addGap(0, 76, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,12 +375,15 @@ public class V_RapportDeVisite extends V_Abstraite {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbRapport)
                     .addComponent(cbRapport, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbPraticien)
                     .addComponent(cbPraticien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDetails))
-                .addGap(17, 17, 17)
+                    .addComponent(lbPraticien))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbVisiteur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbPraticien1))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbDateRapport)
                     .addComponent(txtDateRapport, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -299,54 +401,62 @@ public class V_RapportDeVisite extends V_Abstraite {
                                 .addGap(53, 53, 53)
                                 .addComponent(lbBilan))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(lbOffreEchantillon)
-                                .addGap(7, 7, 7)
+                                .addGap(12, 12, 12)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lbOffreEchantillon)
+                                    .addComponent(btnAjouterEch))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(66, 66, 66)
+                        .addGap(61, 61, 61)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnFermer)
                             .addComponent(btnPrecedent)
                             .addComponent(btnSuivant)
-                            .addComponent(btnNouveau))))
-                .addContainerGap(99, Short.MAX_VALUE))
+                            .addComponent(btnNouveau)
+                            .addComponent(btnAjouter))))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDetailsActionPerformed
-
     private void btnSuivantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuivantActionPerformed
-             ((C_Rapport)controleur).suivant();
+        ((C_Rapport) controleur).suivant();
     }//GEN-LAST:event_btnSuivantActionPerformed
 
     private void btnFermerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFermerActionPerformed
-          ((C_Rapport)controleur).rapportQuitter();
-        
-        
+        ((C_Rapport) controleur).rapportQuitter();
+
+
     }//GEN-LAST:event_btnFermerActionPerformed
 
     private void btnNouveauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNouveauActionPerformed
-        // TODO add your handling code here:
+         ((C_Rapport) controleur).nouveau();
     }//GEN-LAST:event_btnNouveauActionPerformed
 
     private void cbRapportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRapportActionPerformed
-            ((C_Rapport)controleur).rapportSelectionner();
+        ((C_Rapport) controleur).rapportSelectionner();
     }//GEN-LAST:event_cbRapportActionPerformed
 
     private void btnPrecedentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrecedentActionPerformed
-      ((C_Rapport)controleur).precedant();
+        ((C_Rapport) controleur).precedant();
     }//GEN-LAST:event_btnPrecedentActionPerformed
 
+    private void btnAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjouterActionPerformed
+          ((C_Rapport) controleur).ajouter();
+    }//GEN-LAST:event_btnAjouterActionPerformed
+
+    private void btnAjouterEchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjouterEchActionPerformed
+         ((C_Rapport) controleur).menuEch();
+    }//GEN-LAST:event_btnAjouterEchActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnDetails;
+    private javax.swing.JButton btnAjouter;
+    private javax.swing.JButton btnAjouterEch;
     private javax.swing.JToggleButton btnFermer;
     private javax.swing.JToggleButton btnNouveau;
     private javax.swing.JToggleButton btnPrecedent;
     private javax.swing.JToggleButton btnSuivant;
     private javax.swing.JComboBox cbPraticien;
     private javax.swing.JComboBox cbRapport;
+    private javax.swing.JComboBox cbVisiteur;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbBilan;
@@ -354,6 +464,7 @@ public class V_RapportDeVisite extends V_Abstraite {
     private javax.swing.JLabel lbMotifVisite;
     private javax.swing.JLabel lbOffreEchantillon;
     private javax.swing.JLabel lbPraticien;
+    private javax.swing.JLabel lbPraticien1;
     private javax.swing.JLabel lbRapport;
     private javax.swing.JLabel lbRapportVisite;
     private javax.swing.JTable tbEchantillons;

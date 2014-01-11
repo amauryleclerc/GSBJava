@@ -5,17 +5,9 @@
 
 package ctrl;
 
-import static ctrl.EnumAction.MENU_FICHIER_QUITTER;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modele.dao.*;
-import modele.metier.*;
 import vue.V_Connexion;
 
 /**

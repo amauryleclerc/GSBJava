@@ -60,6 +60,13 @@ public class Main {
         } catch (SQLException ex) {
              JOptionPane.showMessageDialog(null, ex.getMessage(), "Lanceur Main - connexion à la BDD", JOptionPane.ERROR_MESSAGE);
         }
+        try {
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+		} catch (ClassNotFoundException | InstantiationException
+				| IllegalAccessException | UnsupportedLookAndFeelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         
         // Pour lancer l'application, instancier le contrôleur principal
         ctrlPrincipal = new C_Principal();

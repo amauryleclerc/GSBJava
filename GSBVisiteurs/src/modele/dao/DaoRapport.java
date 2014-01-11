@@ -10,6 +10,7 @@ import modele.jdbc.Jdbc;
 import java.sql.*;
 import java.util.*;
 
+
 /**
  * Classe DAO pour la classe Rapport
  */
@@ -92,8 +93,51 @@ public class DaoRapport implements DaoInterface<Rapport_Visite, Integer> {
     public int delete(Integer idMetier) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+    public boolean ajouter(Rapport_Visite rapport) throws DaoException {
+        ResultSet rsGK = null; // ResultSet devant contenir le dernier ID généré ou vide
+        int nb;
+        boolean ok =true;
+ java.sql.Date datesql = new java.sql.Date(rapport.getRap_Date().getTime());
+        // préparer la requête
+        String requete = "INSERT INTO RAPPORT_VISITE (VIS_MATRICULE,  PRA_NUM, RAP_DATE,  RAP_BILAN, RAP_MOTIF) VALUES (?, ? , ? , ?, ?)";
+        try {
+            PreparedStatement ps = Jdbc.getInstance().getConnexion().prepareStatement(requete);
+
+            ps.setString(1, rapport.getVisiteur().getVis_Matricule());
+       //     ps.setInt(2,rapport.getRap_Num());
+            ps.setInt(2, rapport.getPracticien().getPra_Num());
+            ps.setDate(3,datesql);
+            ps.setString(4, rapport.getRap_Bilan());
+              ps.setString(5, rapport.getRap_Motif());
+            nb = ps.executeUpdate();
+    /*         rsGK = ps.getGeneratedKeys();
+            if (rsGK.next()){
+               
+                 cle = rsGK.getInt(1);
+            }
+        */   
+        } catch (SQLException ex) {
+            throw new modele.dao.DaoException("DaoRapport::ajouter : erreur requete INSERT : " + ex.getMessage());
+        }
+        return ok;
+    }
+     public int getCleMax() throws DaoException {
+        int result = 0;
+        ResultSet rs = null;
+        // préparer la requête
+        String requete = "SELECT MAX(RAP_NUM) AS CLE FROM RAPPORT_VISITE";
+        try {
+            PreparedStatement ps = Jdbc.getInstance().getConnexion().prepareStatement(requete);
+      
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                result = rs.getInt("CLE");
+            }
+        } catch (SQLException ex) {
+            throw new modele.dao.DaoException("DaoRapport::getOne : erreur requete SELECT : " + ex.getMessage());
+        }
+        return (result);
+    }
 
     //----------------------------------------------------------------------
     //  Méthodes privées
