@@ -5,7 +5,11 @@
 
 package ctrl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modele.dao.*;
 import vue.V_Connexion;
@@ -19,7 +23,7 @@ import vue.V_Connexion;
 public class C_Connexion extends C_Abstrait {
     
    private DaoVisiteur daoVisiteur = new DaoVisiteur();
-
+ private SimpleDateFormat formatFr = new SimpleDateFormat("dd/MM/yyyy");
 
     public C_Connexion(C_Principal ctrlPrincipal) {
         super(ctrlPrincipal);
@@ -38,7 +42,7 @@ public class C_Connexion extends C_Abstrait {
         login = getVue().getTxtLogin().getText();
        // password = getVue().getTxtPassword().getValue();
         try{
-        Date password = new  Date(getVue().getTxtPassword().getText());
+        Date password = formatFr.parse(getVue().getTxtPassword().getText());
  
 
 
@@ -53,10 +57,11 @@ public class C_Connexion extends C_Abstrait {
                 msg = "CtrlConnexion - seConnecter() - " + ex.getMessage();
                 typeMsg = JOptionPane.ERROR_MESSAGE;
             } 
-                   } catch (java.lang.IllegalArgumentException il) {
-                msg = "le format du mot de passe est mauvais";
+     
+            } catch (ParseException ex) { 
+             msg = "le format du mot de passe est mauvais";
                 typeMsg = JOptionPane.ERROR_MESSAGE;
-            } 
+       } 
        if(!msg.isEmpty()){
        JOptionPane.showMessageDialog(getVue(), msg, "Connexion", typeMsg);
        }

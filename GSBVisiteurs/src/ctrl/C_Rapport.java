@@ -4,6 +4,8 @@
  */
 package ctrl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -32,6 +34,8 @@ public class C_Rapport extends C_Abstrait {
     private DaoOffrir daoOffrir = new DaoOffrir();
     private DaoVisiteur daoVisiteur = new DaoVisiteur();
     private DaoMedicament daoMedicament = new DaoMedicament();
+    private SimpleDateFormat formatFr = new SimpleDateFormat("dd/MM/yyyy");
+
 
     //private V_Abstraite vueAjoutEch = new  V_AjoutEch(this);
     public C_Rapport(C_Principal ctrlPrincipal) {
@@ -107,15 +111,19 @@ public class C_Rapport extends C_Abstrait {
         getVue().getMtEchantillon().setRowCount(0);
     }
 
-    public final void ajouter() {
-            String msg = ""; // message à afficher à l'issue de la mise à jour
-        int typeMsg = 0;
+    public final void ajouter()  {
+            String msg = "ajout du rapport réussi"; // message à afficher à l'issue de la mise à jour
+        int typeMsg = JOptionPane.INFORMATION_MESSAGE;
+                  
         int cle = 0;
         Visiteur unVisiteur = (Visiteur) getVue().getCbVisiteur().getSelectedItem();
         Praticien unPraticien = (Praticien) getVue().getCbPraticien().getSelectedItem();
         String bilan = getVue().getTxtBilan().getText();
         String motif = getVue().getTxtMotifVisite().getText();
-        Date date = new Date(getVue().getTxtDateRapport().getText());
+        Date date;
+        try {
+            date = formatFr.parse(getVue().getTxtDateRapport().getText());
+  
         Rapport_Visite unRapport = new Rapport_Visite(unVisiteur, 0, unPraticien, date, bilan, motif);
         
 
@@ -125,10 +133,7 @@ public class C_Rapport extends C_Abstrait {
         try {
             daoRapport.ajouter(unRapport);
             cle = daoRapport.getCleMax();
-        } catch (DaoException ex) {
-                     msg = "erreur à l'ajout du rapport";
-                typeMsg = JOptionPane.ERROR_MESSAGE;
-        }
+
         if (cle>0){
         unRapport.setRap_Num(cle);
         
@@ -152,9 +157,17 @@ public class C_Rapport extends C_Abstrait {
             msg = "impossible de trouver l'identifiant du rapport";
                 typeMsg = JOptionPane.ERROR_MESSAGE;
         }
-         if(!msg.isEmpty()){
-       JOptionPane.showMessageDialog(getVue(), msg, "Connexion", typeMsg);
-       }
+                } catch (DaoException ex) {
+                     msg = "erreur à l'ajout du rapport";
+                typeMsg = JOptionPane.ERROR_MESSAGE;
+        }
+              } catch (ParseException ex) {
+             msg = "impossible de convertir la date";
+                typeMsg = JOptionPane.ERROR_MESSAGE;
+        }
+     
+       JOptionPane.showMessageDialog(getVue(), msg, "Ajout rapport", typeMsg);
+       
         actualiser();
     }
 
@@ -171,7 +184,9 @@ public class C_Rapport extends C_Abstrait {
             typeMsg = JOptionPane.WARNING_MESSAGE;
         } else {
             getVue().getTxtBilan().setText(rapportSelect.getRap_Bilan());
-            getVue().getTxtDateRapport().setText(rapportSelect.getRap_Date().toString());
+            if(rapportSelect.getRap_Date()!=null){
+            getVue().getTxtDateRapport().setText(formatFr.format(rapportSelect.getRap_Date()));
+            }
             getVue().getTxtMotifVisite().setText(rapportSelect.getRap_Motif());
             getVue().getMcbPraticien().setSelectedItem(rapportSelect.getPracticien());
             getVue().getMcbVisiteur().setSelectedItem(rapportSelect.getVisiteur());
